@@ -30,6 +30,13 @@ TEST_F(VectorTest, whenInitializedVectorCapacityEqualTen)
     EXPECT_EQ(vectorTest.capacity(), 10);
 }
 
+TEST_F(VectorTest, WhenCapacityExtendensionCalledTheCapacityIsExtended)
+{
+	auto capacityBeforeExtension = vectorTest.capacity();
+	// vectorTest.extendCapacity(1);
+	EXPECT_TRUE(vectorTest.capacity() > capacityBeforeExtension);
+}
+
 TEST_F(VectorTest, whenIntisPushBackItsOnVectorIndex0) 
 {
     vectorTest.pushBack(1);
