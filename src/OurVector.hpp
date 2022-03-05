@@ -16,6 +16,7 @@ public:
     size_t size();
     void pushBack(T );
     void popBack();
+    void extendCapacity();
     T at(size_t );
 
 private:

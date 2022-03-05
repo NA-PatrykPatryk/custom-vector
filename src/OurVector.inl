@@ -36,20 +36,23 @@ size_t OurVector<T>::capacity()
 }
 
 template <typename T>
-void OurVector<T>::pushBack(T val)
-{
+void OurVector<T>::extendCapacity() {
+       T* tempArr = new T[static_cast<size_t>(d_capacity * capacityMultiplicator)];
 
-    if(d_size>=d_capacity)
-    {
-        
-       T* tempArr = new T[static_cast<size_t>(d_capacity* capacityMultiplicator)];
-       for (size_t i = 0; i < d_size; i++)
-       {
+       for (size_t i = 0; i < d_size; i++) {
            tempArr[i] = d_arr[i];
        }
        delete [] d_arr;  
-       d_capacity*=capacityMultiplicator;
+
        d_arr = tempArr;
+       d_capacity = (size_t)(d_capacity * capacityMultiplicator);
+}
+
+template <typename T>
+void OurVector<T>::pushBack(T val)
+{
+    if(d_size>=d_capacity) {
+	    extendCapacity();
     }
     d_arr[d_size] = val;
     d_size++;
