@@ -22,7 +22,7 @@ TEST_F(VectorTest, whenInputIs6SizeShouldReturn6)
 TEST_F(VectorTest, WhenInitWithNegativeSizeThenDoNothing)
 {
     OurVector<int> vec(-1);
-    EXPECT_EQ(vec.size(), 6);
+    EXPECT_EQ(vec.size(), 0);
 }
 
 TEST_F(VectorTest, whenInitializedVectorCapacityEqualTen) 
