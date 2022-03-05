@@ -18,7 +18,6 @@ public:
     void popBack();
     T at(size_t );
 
-
 private:
     size_t capacityBase{ 10 };
     double capacityMultiplicator{ 1.5 };
