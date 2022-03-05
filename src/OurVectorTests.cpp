@@ -8,8 +8,6 @@ struct VectorTest:public ::testing::Test
     OurVector<int> vectorTest;
 };
 
-
-
 TEST_F(VectorTest, sizeMethodShouldReturn0WhenClassInitialized) 
 {
     EXPECT_EQ(vectorTest.size(), 0);
@@ -49,7 +47,13 @@ TEST_F(VectorTest, whenInitializedWithSize1AndValue5ShouldReturn5)
 
 TEST_F(VectorTest, whenUsingAtOutOfScopeShouldThrowExcept)
 {
-    ASSERT_THROW(vectorTest.at(6),std::out_of_range);
+    EXPECT_THROW(vectorTest.at(6),std::out_of_range);
+}
+
+TEST_F(VectorTest, whenUsingNegativeIndexShouldThrowExcept)
+{
+    EXPECT_THROW(vectorTest.at(0),std::out_of_range);
+    EXPECT_THROW(vectorTest.at(-1),std::out_of_range);
 }
 
 TEST_F(VectorTest, whenCapacityIsOverCopyElementsToNewArray)
