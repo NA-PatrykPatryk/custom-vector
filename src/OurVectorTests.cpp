@@ -19,6 +19,12 @@ TEST_F(VectorTest, whenInputIs6SizeShouldReturn6)
     EXPECT_EQ(vec.size(), 6);
 }
 
+TEST_F(VectorTest, WhenInitWithNegativeSizeThenDoNothing)
+{
+    OurVector<int> vec(-1);
+    EXPECT_EQ(vec.size(), 6);
+}
+
 TEST_F(VectorTest, whenInitializedVectorCapacityEqualTen) 
 {
     EXPECT_EQ(vectorTest.capacity(), 10);
@@ -45,6 +51,12 @@ TEST_F(VectorTest, whenInitializedWithSize1AndValue5ShouldReturn5)
     EXPECT_EQ(sut.at(0), vecValue);
 }
 
+TEST_F(VectorTest, WhenVectorFilledWithSixFoursExpect4AtIndex3)
+{
+    OurVector<int> vec(6, 4);
+    EXPECT_EQ(vec.at(3), 4);
+}
+
 TEST_F(VectorTest, whenUsingAtOutOfScopeShouldThrowExcept)
 {
     EXPECT_THROW(vectorTest.at(6),std::out_of_range);
@@ -52,7 +64,6 @@ TEST_F(VectorTest, whenUsingAtOutOfScopeShouldThrowExcept)
 
 TEST_F(VectorTest, whenUsingNegativeIndexShouldThrowExcept)
 {
-    EXPECT_THROW(vectorTest.at(0),std::out_of_range);
     EXPECT_THROW(vectorTest.at(-1),std::out_of_range);
 }
 

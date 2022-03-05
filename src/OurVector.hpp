@@ -7,8 +7,8 @@ public:
     using size_t = unsigned long;
 
 public:
-    OurVector(size_t size = 0);
-    OurVector(size_t size, T);
+    OurVector(int size = 0);
+    OurVector(int size, T);
     ~OurVector();
 
 public:

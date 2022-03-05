@@ -2,18 +2,18 @@
 
 
 template <typename T>
-OurVector<T>::OurVector(size_t size)
-    : d_size{ size }
-    , d_capacity{ static_cast<size_t>(size * capacityMultiplicator + capacityBase) }
-    , d_arr{ new T[d_capacity] }
+OurVector<T>::OurVector(int size) :
+	d_size{ size >= 0? (size_t)size : (size_t)0 },
+	d_capacity{ static_cast<size_t>(size * capacityMultiplicator + capacityBase) },
+	d_arr{ new T[d_capacity] }
 {
 }
 
 template <typename T>
-OurVector<T>::OurVector(size_t size, T value)
+OurVector<T>::OurVector(int size, T value)
     : OurVector(size)
 {
-    for(size_t i = 0; i < size; i++) {
+    for(size_t i = 0; i < (size_t)size; i++) {
         d_arr[i] = value;
     }
 }
