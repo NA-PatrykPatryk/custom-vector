@@ -9,6 +9,7 @@ public:
 public:
     OurVector(size_t size = 0);
     OurVector(size_t size, T);
+    ~OurVector();
 
 public:
     size_t capacity();
@@ -16,12 +17,13 @@ public:
     void pushBack(T );
     T at(size_t );
 
+
 private:
     size_t capacityBase{ 10 };
     double capacityMultiplicator{ 1.5 };
     size_t d_size{};
     size_t d_capacity{};
-    T* d_arr{};
+    T* d_arr{nullptr};
 };
 
 #include "OurVector.inl"
