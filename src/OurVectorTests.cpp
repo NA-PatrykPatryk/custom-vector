@@ -46,7 +46,7 @@ TEST_F(VectorTest, whenUsingAtOutOfScopeShouldThrowExcept)
     ASSERT_THROW(vectorTest.at(6),std::out_of_range);
 }
 
-TEST_F(VectorTest, whenCapacity)
+TEST_F(VectorTest, whenCapacityIsOverCopyElementsToNewArray)
 {
     vectorTest.pushBack(2);
     vectorTest.pushBack(2);
