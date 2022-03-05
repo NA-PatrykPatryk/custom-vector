@@ -15,6 +15,12 @@ TEST_F(VectorTest, sizeMethodShouldReturn0WhenClassInitialized)
     EXPECT_EQ(vectorTest.size(), 0);
 }
 
+TEST_F(VectorTest, whenInputIs6SizeShouldReturn6) 
+{
+    OurVector<int> vec(6);
+    EXPECT_EQ(vec.size(), 6);
+}
+
 TEST_F(VectorTest, whenInitializedVectorCapacityEqualTen) 
 {
     EXPECT_EQ(vectorTest.capacity(), 10);
@@ -35,8 +41,8 @@ TEST_F(VectorTest, whenInitializedWithSizeEqual5SizeShouldReturn5)
 
 TEST_F(VectorTest, whenInitializedWithSize1AndValue5ShouldReturn5)
 {
-    int vecSize{1};
-    int vecValue{5};
+    int vecSize{ 1 };
+    int vecValue{ 5 };
     OurVector<int> sut(vecSize, vecValue);
     EXPECT_EQ(sut.at(0), vecValue);
 }
@@ -62,4 +68,17 @@ TEST_F(VectorTest, whenCapacityIsOverCopyElementsToNewArray)
     vectorTest.pushBack(2);
     EXPECT_EQ(vectorTest.size(),12);
     EXPECT_EQ(vectorTest.capacity(),15);
+}
+
+TEST_F(VectorTest, whenVectorHasSize2ShouldHaveSize1AfterPopBack)
+{
+    OurVector<int> vec(2, 4);
+    vec.popBack();
+    EXPECT_EQ(vec.size(), 1);
+}
+
+TEST_F(VectorTest, whenVectorHasSize0ShouldHaveSize0AfterPopBack)
+{
+    vectorTest.popBack();
+    EXPECT_EQ(vectorTest.size(), 0);
 }

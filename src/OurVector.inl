@@ -2,12 +2,6 @@
 
 
 template <typename T>
-OurVector<T>::~OurVector(){
-    delete [] d_arr;
-}
-    
-
-template <typename T>
 OurVector<T>::OurVector(size_t size)
     : d_size{ size }
     , d_capacity{ static_cast<size_t>(size * capacityMultiplicator + capacityBase) }
@@ -24,6 +18,10 @@ OurVector<T>::OurVector(size_t size, T value)
     }
 }
 
+template <typename T>
+OurVector<T>::~OurVector(){
+    delete [] d_arr;
+}
 
 template <typename T>
 size_t OurVector<T>::size() 
@@ -58,13 +56,19 @@ void OurVector<T>::pushBack(T val)
 }
 
 template <typename T>
+void OurVector<T>::popBack()
+{
+    if(d_size > 0)
+        --d_size;
+}
+
+template <typename T>
 T OurVector<T>::at(size_t index)
 {
-    if(index>=d_size)
+    if(index >= d_size)
     {
         throw std::out_of_range("vector index out of bound");
     }
 
     return d_arr[index];
 }
-
