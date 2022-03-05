@@ -8,3 +8,11 @@ TEST(VectorTest, sizeMethodShouldReturn0WhenClassInitialized)
     ASSERT_EQ(sut.size(), 0);
 }
 
+TEST(VectorTest, whenInitilializedVecotorCapacityEqualTen) 
+{
+    OurVector<int> sut;
+
+    ASSERT_EQ(sut.capacity(), 10);
+}
+
+
