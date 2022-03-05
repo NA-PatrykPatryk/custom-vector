@@ -18,6 +18,7 @@ public:
     void popBack();
     void extendCapacity();
     T at(size_t );
+    T *getArrRaw() const;
 
 private:
     size_t capacityBase{ 10 };

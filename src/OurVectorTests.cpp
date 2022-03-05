@@ -30,11 +30,17 @@ TEST_F(VectorTest, whenInitializedVectorCapacityEqualTen)
     EXPECT_EQ(vectorTest.capacity(), 10);
 }
 
-TEST_F(VectorTest, WhenCapacityExtendensionCalledThenCapacityIsExtended)
+TEST_F(VectorTest, WhenCapacityExtensionCalledThenCapacityIsExtended)
 {
 	auto capacityBeforeExtension = vectorTest.capacity();
 	vectorTest.extendCapacity();
 	EXPECT_TRUE(vectorTest.capacity() > capacityBeforeExtension);
+}
+
+TEST_F(VectorTest, WhenCapacityExtensionCalledThenReferenceToCapacityMinusOneIsValid) {
+	vectorTest.getArrRaw()[vectorTest.capacity() - 1] = 0;
+	vectorTest.extendCapacity();
+	vectorTest.getArrRaw()[vectorTest.capacity() - 1] = 0;
 }
 
 TEST_F(VectorTest, whenIntisPushBackItsOnVectorIndex0) 
