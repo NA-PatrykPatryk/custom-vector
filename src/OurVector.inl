@@ -9,6 +9,16 @@ OurVector<T>::OurVector(size_t size)
 }
 
 template <typename T>
+OurVector<T>::OurVector(size_t size, T value)
+    : OurVector(size)
+{
+    for(size_t i = 0; i < size; i++) {
+        d_arr[i] = value;
+    }
+}
+
+
+template <typename T>
 size_t OurVector<T>::size() 
 {
     return d_size;

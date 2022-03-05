@@ -13,7 +13,7 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(googletest)
 
-add_executable(sample_test src/sampleTests.cpp)
+add_executable(sample_test src/OurVectorTests.cpp)
 target_include_directories(sample_test PUBLIC include)
 target_link_libraries(sample_test gmock_main gtest gmock)
 

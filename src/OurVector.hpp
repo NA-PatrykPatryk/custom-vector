@@ -8,6 +8,7 @@ public:
 
 public:
     OurVector(size_t size = 0);
+    OurVector(size_t size, T);
 
 public:
     size_t capacity();
