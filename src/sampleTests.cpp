@@ -1,11 +1,10 @@
 #include "gtest/gtest.h"
+#include "OurVector.hpp"
 
-TEST(SampleTestName, PassingSampleTestCaseName)
+
+TEST(VectorTest, sizeMethodShouldReturn0WhenClassInitialized) 
 {
-    ASSERT_EQ(0, 0);
+    OurVector<int> sut;
+    ASSERT_EQ(sut.size(), 0);
 }
 
-TEST(SampleTestName, FailingSampleTestCaseName)
-{
-    ASSERT_EQ(0, 1);
-}
