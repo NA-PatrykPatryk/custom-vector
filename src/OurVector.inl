@@ -36,20 +36,24 @@ size_t OurVector<T>::capacity()
 }
 
 template <typename T>
-void OurVector<T>::pushBack(T val)
-{
+void OurVector<T>::extendCapacity() {
+       const auto newCapacity = static_cast<size_t>(d_capacity * capacityMultiplicator);
+       T* tempArr = new T[newCapacity];
 
-    if(d_size>=d_capacity)
-    {
-        
-       T* tempArr = new T[static_cast<size_t>(d_capacity* capacityMultiplicator)];
-       for (size_t i = 0; i < d_size; i++)
-       {
+       for (size_t i = 0; i < d_size; i++) {
            tempArr[i] = d_arr[i];
        }
        delete [] d_arr;  
-       d_capacity*=capacityMultiplicator;
+
        d_arr = tempArr;
+       d_capacity = newCapacity;
+}
+
+template <typename T>
+void OurVector<T>::pushBack(T val)
+{
+    if(d_size>=d_capacity) {
+	    extendCapacity();
     }
     d_arr[d_size] = val;
     d_size++;
@@ -60,6 +64,11 @@ void OurVector<T>::popBack()
 {
     if(d_size > 0)
         --d_size;
+}
+
+template <typename T>
+T *OurVector<T>::getArrRaw() const {
+	return d_arr;
 }
 
 template <typename T>
