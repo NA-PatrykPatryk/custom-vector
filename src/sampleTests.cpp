@@ -16,3 +16,13 @@ TEST(VectorTest, whenInitilializedVecotorCapacityEqualTen)
 }
 
 
+TEST(VectorTest, whenIntisPushBackItsOnVectorIndex0) 
+{
+    OurVector<int> sut;
+        sut.pushBack(1);
+    ASSERT_EQ(sut.at(0), 1 );
+}
+
+
+
+
