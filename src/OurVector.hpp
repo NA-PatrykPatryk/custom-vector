@@ -19,6 +19,7 @@ public:
     T at(size_t );
     T *getArrRaw() const;
     T *begin() const;
+    T *end() const;
 
 private:
     void extendCapacity();
