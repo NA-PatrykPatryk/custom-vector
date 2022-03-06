@@ -126,7 +126,7 @@ TEST_F(VectorTest, IteratorInitializedAndIncrementedPointsToSecondElement) {
 TEST_F(VectorTest, IteratorRecognizesWhenIncrementedToEnd) {
     vectorTest.pushBack(10);
     vectorTest.pushBack(11);
-    auto i = vectorTest.begin();
+    OurVector<int>::RandomAccessIterator i = vectorTest.begin();
     i = i + 2;
     EXPECT_EQ(i, vectorTest.end());
 }

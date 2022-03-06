@@ -12,6 +12,7 @@ public:
     ~OurVector();
 
 public:
+    using RandomAccessIterator = T*;
     size_t capacity();
     size_t size();
     void pushBack(T );
