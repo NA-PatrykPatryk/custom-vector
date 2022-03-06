@@ -131,7 +131,7 @@ TEST_F(VectorTest, IteratorRecognizesWhenIncrementedToEnd) {
     EXPECT_EQ(i, vectorTest.end());
 }
 
-TEST_F(VectorTest, UsingAtForModification) {
+TEST_F(VectorTest, UsingAtForChangeSecondElementFromValueAToValueB) {
     int A = 11;
     int B = 22;
     vectorTest.pushBack(10);
