@@ -38,5 +38,6 @@
 *.swp
 
 # Folders
+priv
 build
 .vscode
