@@ -130,3 +130,12 @@ TEST_F(VectorTest, IteratorRecognizesWhenIncrementedToEnd) {
     i = i + 2;
     EXPECT_EQ(i, vectorTest.end());
 }
+
+TEST_F(VectorTest, UsingAtForModification) {
+    int A = 11;
+    int B = 22;
+    vectorTest.pushBack(10);
+    vectorTest.pushBack(A);
+    vectorTest.at(1) = B;
+    EXPECT_NE(vectorTest.at(1), A);
+}
