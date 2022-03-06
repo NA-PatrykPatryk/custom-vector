@@ -88,7 +88,7 @@ T *OurVector<T>::end() const {
 }
 
 template <typename T>
-T OurVector<T>::at(size_t index)
+T &OurVector<T>::at(size_t index)
 {
     if(index >= d_size)
     {

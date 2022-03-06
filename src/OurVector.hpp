@@ -16,7 +16,7 @@ public:
     size_t size();
     void pushBack(T );
     void popBack();
-    T at(size_t );
+    T &at(size_t);
     T *getArrRaw() const;
     T *begin() const;
     T *end() const;
