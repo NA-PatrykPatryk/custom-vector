@@ -18,7 +18,7 @@ public:
     void popBack();
     T at(size_t );
     T *getArrRaw() const;
-    T *begin();
+    T *begin() const;
 
 private:
     void extendCapacity();

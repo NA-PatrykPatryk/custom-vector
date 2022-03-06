@@ -78,7 +78,7 @@ T *OurVector<T>::getArrRaw() const {
 }
 
 template <typename T>
-T *OurVector<T>::begin() {
+T *OurVector<T>::begin() const {
 	return d_arr;
 }
 

@@ -103,12 +103,14 @@ TEST_F(VectorTest, whenVectorHasSize0ShouldHaveSize0AfterPopBack)
     EXPECT_EQ(vectorTest.size(), 0);
 }
 
-TEST_F(VectorTest, IteratorBeginPointsToFirstElement)
-{
+TEST_F(VectorTest, IteratorBeginPointsToFirstElement) {
     vectorTest.pushBack(10);
     vectorTest.pushBack(11);
-    vectorTest.pushBack(12);
-    vectorTest.pushBack(13);
     EXPECT_EQ(*(vectorTest.begin()), vectorTest.at(0));
-    // EXPECT_EQ(*(vectorTest.begin() + 1), vectorTest.at(1));
+}
+
+TEST_F(VectorTest, IteratorBeginNextPointsToSecondElement) {
+    vectorTest.pushBack(10);
+    vectorTest.pushBack(11);
+    EXPECT_EQ(*(vectorTest.begin() + 1), vectorTest.at(1));
 }
