@@ -3,9 +3,9 @@
 
 template <typename T>
 OurVector<T>::OurVector(int size) :
-	d_size{ size >= 0? (size_t)size : (size_t)0 },
-	d_capacity{ static_cast<size_t>(size * capacityMultiplicator + capacityBase) },
-	d_arr{ new T[d_capacity] }
+	d_size{ size >= 0 ? (size_t)size : (size_t)0 },
+	d_capacity{ d_size },
+    d_arr{ d_capacity ? new T[d_capacity] : nullptr }
 {
 }
 
@@ -37,16 +37,22 @@ size_t OurVector<T>::capacity()
 
 template <typename T>
 void OurVector<T>::extendCapacity() {
-       const auto newCapacity = static_cast<size_t>(d_capacity * capacityMultiplicator);
-       T* tempArr = new T[newCapacity];
+    size_t newCapacity {};
+    if (d_capacity) {
+        newCapacity = d_capacity * 2;
+    } else {
+        newCapacity = 1;
+    }
 
-       for (size_t i = 0; i < d_size; i++) {
-           tempArr[i] = d_arr[i];
-       }
-       delete [] d_arr;  
+    T* tempArr = new T[newCapacity];
 
-       d_arr = tempArr;
-       d_capacity = newCapacity;
+    for (size_t i = 0; i < d_size; i++) {
+        tempArr[i] = d_arr[i];
+    }
+    delete [] d_arr;  
+
+    d_arr = tempArr;
+    d_capacity = newCapacity;
 }
 
 template <typename T>

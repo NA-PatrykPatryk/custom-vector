@@ -16,13 +16,13 @@ public:
     size_t size();
     void pushBack(T );
     void popBack();
-    void extendCapacity();
     T at(size_t );
     T *getArrRaw() const;
 
 private:
-    size_t capacityBase{ 10 };
-    double capacityMultiplicator{ 1.5 };
+    void extendCapacity();
+
+private:
     size_t d_size{};
     size_t d_capacity{};
     T* d_arr{ nullptr };
