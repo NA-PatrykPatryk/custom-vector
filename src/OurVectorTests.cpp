@@ -114,3 +114,19 @@ TEST_F(VectorTest, IteratorBeginNextPointsToSecondElement) {
     vectorTest.pushBack(11);
     EXPECT_EQ(*(vectorTest.begin() + 1), vectorTest.at(1));
 }
+
+TEST_F(VectorTest, IteratorInitializedAndIncrementedPointsToSecondElement) {
+    vectorTest.pushBack(10);
+    vectorTest.pushBack(11);
+    auto i = vectorTest.begin();
+    i = i + 1;
+    EXPECT_EQ(*i, vectorTest.at(1));
+}
+
+TEST_F(VectorTest, IteratorRecognizesWhenIncrementedToEnd) {
+    vectorTest.pushBack(10);
+    vectorTest.pushBack(11);
+    auto i = vectorTest.begin();
+    i = i + 2;
+    EXPECT_EQ(i, vectorTest.end());
+}
