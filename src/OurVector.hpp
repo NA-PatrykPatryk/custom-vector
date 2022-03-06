@@ -9,6 +9,7 @@ public:
 public:
     OurVector(int size = 0);
     OurVector(int size, T);
+    OurVector(std::initializer_list<T>);
     ~OurVector();
 
 public:

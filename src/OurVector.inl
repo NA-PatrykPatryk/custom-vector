@@ -19,6 +19,19 @@ OurVector<T>::OurVector(int size, T value)
 }
 
 template <typename T>
+OurVector<T>::OurVector(std::initializer_list<T> list) 
+    : d_size{list.size()},
+    d_capacity{d_size},
+    d_arr{new T[d_capacity]}
+{
+    int i {0};
+    for (auto x : list) {
+        d_arr[i] = x;
+        ++i;
+    }
+}
+
+template <typename T>
 OurVector<T>::~OurVector(){
     delete [] d_arr;
 }

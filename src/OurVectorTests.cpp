@@ -139,3 +139,8 @@ TEST_F(VectorTest, UsingAtForChangeSecondElementFromValueAToValueB) {
     vectorTest.at(1) = B;
     EXPECT_NE(vectorTest.at(1), A);
 }
+
+TEST_F(VectorTest, whenCreatedWithInitializerListArratContainsProviedValues) {
+    OurVector<int> sut {2, 5, 1, 5, 2, 6};
+    EXPECT_EQ(sut.at(3), 5);
+}
