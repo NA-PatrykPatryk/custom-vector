@@ -78,6 +78,16 @@ T *OurVector<T>::getArrRaw() const {
 }
 
 template <typename T>
+T *OurVector<T>::begin() const {
+	return d_arr;
+}
+
+template <typename T>
+T *OurVector<T>::end() const {
+	return d_arr + d_size;
+}
+
+template <typename T>
 T OurVector<T>::at(size_t index)
 {
     if(index >= d_size)
