@@ -13,16 +13,16 @@ TEST_F(VectorTest, sizeMethodShouldReturn0WhenClassInitialized)
     EXPECT_EQ(vectorTest.size(), 0);
 }
 
+TEST_F(VectorTest, WhenInitWithNegativeSizeThenDoNothing)
+{
+    EXPECT_THROW(OurVector<int> vec(-1), std::invalid_argument);
+    EXPECT_THROW(OurVector<int> vec(-1, 2), std::invalid_argument);
+}
+
 TEST_F(VectorTest, whenInputIs6SizeShouldReturn6) 
 {
     OurVector<int> vec(6);
     EXPECT_EQ(vec.size(), 6);
-}
-
-TEST_F(VectorTest, WhenInitWithNegativeSizeThenDoNothing)
-{
-    OurVector<int> vec(-1);
-    EXPECT_EQ(vec.size(), 0);
 }
 
 TEST_F(VectorTest, whenInitializedVectorCapacityEqualZero) 

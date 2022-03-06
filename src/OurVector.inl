@@ -1,12 +1,16 @@
 #include "OurVector.hpp"
 
-
 template <typename T>
-OurVector<T>::OurVector(int size) :
-	d_size{ size >= 0 ? (size_t)size : (size_t)0 },
-	d_capacity{ d_size },
-    d_arr{ d_capacity ? new T[d_capacity] : nullptr }
+OurVector<T>::OurVector(int size)
+    : d_size{ static_cast<size_t>(size) }
+    , d_capacity{ d_size }
 {
+    if (size < 0)
+    {
+        throw std::invalid_argument{ "Invalid argument provided" };
+    }
+    
+    d_arr = new T[d_capacity];
 }
 
 template <typename T>
@@ -20,7 +24,7 @@ OurVector<T>::OurVector(int size, T value)
 
 template <typename T>
 OurVector<T>::OurVector(std::initializer_list<T> list) 
-    : d_size{list.size()},
+    : d_size{ list.size() },
     d_capacity{d_size},
     d_arr{new T[d_capacity]}
 {

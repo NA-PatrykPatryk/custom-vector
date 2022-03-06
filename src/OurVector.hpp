@@ -27,9 +27,9 @@ private:
     void extendCapacity();
 
 private:
-    size_t d_size{};
-    size_t d_capacity{};
-    T* d_arr{ nullptr };
+    size_t d_size;
+    size_t d_capacity;
+    T* d_arr;
 };
 
 #include "OurVector.inl"
