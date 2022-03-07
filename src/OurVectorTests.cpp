@@ -83,6 +83,14 @@ TEST_F(VectorTest, whenUsingNegativeIndexShouldThrowExcept)
     EXPECT_THROW(vectorTest.at(-1),std::out_of_range);
 }
 
+TEST_F(VectorTest, whenChangedVectorValueWithAtMethodTo5ItIs5)
+{
+    OurVector<int> vec(1);
+    int expectedValue {5};
+    vec.at(0) = 5;
+    EXPECT_EQ(vec.at(0), expectedValue);
+}
+
 TEST_F(VectorTest, vectorCanStoreDifferentDataTypes) 
 {
     std::string testValue {"testCase"};
