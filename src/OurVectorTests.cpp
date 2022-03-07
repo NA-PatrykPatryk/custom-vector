@@ -178,3 +178,9 @@ TEST_F(VectorTest, whenVectorIsClearedItsSizeIs0) {
     sut.clear();
     EXPECT_EQ(sut.size(), 0);
 }
+
+TEST_F(VectorTest, whenVectorIsResized) {
+    OurVector<int> sut(5, 0);
+    sut.clear();
+    EXPECT_EQ(sut.size(), 0);
+}
