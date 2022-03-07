@@ -16,6 +16,7 @@ public:
 public:
     size_t capacity();
     size_t size();
+    void shrinkToSize();
 
     void pushBack(T);
     void popBack();
@@ -24,7 +25,7 @@ public:
     void emplaceBack(Args&&... args)
     {
         if(d_size >= d_capacity) {
-            extendCapacity();
+            reAlloc();
         }
 
         d_arr[d_size] = T(std::forward<Args>(args)...);
@@ -44,7 +45,7 @@ public:
     T& operator[](size_t);
 
 private:
-    void extendCapacity();
+    void reAlloc();
 
 private:
     size_t d_size;

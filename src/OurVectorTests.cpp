@@ -184,3 +184,10 @@ TEST_F(VectorTest, whenVectorIsResized) {
     sut.clear();
     EXPECT_EQ(sut.size(), 0);
 }
+
+TEST_F(VectorTest, whenVectorIsShrunkToSizeItsCapacityEqualsSize) {
+    OurVector<int> sut(5, 0);
+    sut.pushBack(1);
+    sut.shrinkToSize();
+    EXPECT_EQ(sut.size(), sut.capacity());
+}

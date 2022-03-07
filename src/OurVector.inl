@@ -53,7 +53,7 @@ size_t OurVector<T>::capacity()
 }
 
 template <typename T>
-void OurVector<T>::extendCapacity() {
+void OurVector<T>::reAlloc() {
     size_t newCapacity {};
     if (d_capacity) {
         newCapacity = d_capacity * 2;
@@ -76,7 +76,7 @@ template <typename T>
 void OurVector<T>::pushBack(T val)
 {
     if(d_size>=d_capacity) {
-	    extendCapacity();
+	    reAlloc();
     }
 
     d_arr[d_size] = std::move(val);
@@ -145,4 +145,9 @@ template <typename T>
 T &OurVector<T>::operator[](size_t index)
 {
     return d_arr[index];
+}
+
+template <typename T>
+void OurVector<T>::shrinkToSize() {
+    d_capacity = d_size;
 }
