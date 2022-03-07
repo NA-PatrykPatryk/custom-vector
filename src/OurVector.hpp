@@ -4,7 +4,7 @@ template <typename T>
 class OurVector 
 {
 public:
-    using size_t = unsigned long;
+    // using size_t = unsigned long;
     using RandomAccessIterator = T*;
 
 public:
