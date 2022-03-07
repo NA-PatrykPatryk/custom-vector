@@ -117,3 +117,14 @@ const T &OurVector<T>::at(size_t index) const
 
     return d_arr[index];
 }
+
+template <typename T>
+T &OurVector<T>::at(size_t index)
+{
+    if(index >= d_size)
+    {
+        throw std::out_of_range("vector index out of bound");
+    }
+
+    return d_arr[index];
+}

@@ -19,7 +19,7 @@ public:
     void pushBack(T );
     void popBack();
     const T &at(size_t) const;
-    // T &at(size_t);
+    T &at(size_t);
     T *getArrRaw() const;
     T *begin() const;
     T *end() const;
