@@ -38,6 +38,9 @@ public:
     T *begin() const;
     T *end() const;
 
+public:
+    const T& operator[](size_t) const;
+
 private:
     void extendCapacity();
 

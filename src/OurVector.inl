@@ -129,3 +129,9 @@ T &OurVector<T>::at(size_t index)
 
     return d_arr[index];
 }
+
+template <typename T>
+const T &OurVector<T>::operator[](size_t index) const
+{
+    return d_arr[index];
+}

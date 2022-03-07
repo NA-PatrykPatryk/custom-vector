@@ -151,10 +151,17 @@ TEST_F(VectorTest, whenCreatedWithInitializerListShouldContainProviedValues) {
     EXPECT_EQ(sut.at(3), 5);
 }
 
-TEST_F(VectorTest, whenEmplacingElementShouldConstructAndStoreItInContainer) {
+TEST_F(VectorTest, whenEmplacingElementShouldStoreItInContainer) {
     OurVector<std::pair<int, int>> sut;
     std::pair<int, int> testPair {1, 5};
     sut.emplaceBack(1, 5);
     EXPECT_EQ(sut.at(0).first, testPair.first);
     EXPECT_EQ(sut.at(0).second, testPair.second);
+}
+
+TEST_F(VectorTest, whenUsingSquareBracketsOperatorShouldReturnSameValueRoundBracketsDo) {
+    OurVector<int> sut{1, 2, 3};
+    EXPECT_EQ(sut[0], sut.at(0));
+    EXPECT_EQ(sut[1], sut.at(1));
+    EXPECT_EQ(sut[2], sut.at(2));
 }
