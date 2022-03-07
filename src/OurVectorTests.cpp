@@ -8,6 +8,11 @@ struct VectorTest:public ::testing::Test
     OurVector<int> vectorTest;
 };
 
+TEST_F(VectorTest, whenInitializedVectorCapacityEqualZero) 
+{
+    EXPECT_EQ(vectorTest.capacity(), 0);
+}
+
 TEST_F(VectorTest, sizeMethodShouldReturn0WhenClassInitialized) 
 {
     EXPECT_EQ(vectorTest.size(), 0);
@@ -23,11 +28,6 @@ TEST_F(VectorTest, whenInputIs6SizeShouldReturn6)
 {
     OurVector<int> vec(6);
     EXPECT_EQ(vec.size(), 6);
-}
-
-TEST_F(VectorTest, whenInitializedVectorCapacityEqualZero) 
-{
-    EXPECT_EQ(vectorTest.capacity(), 0);
 }
 
 /*
@@ -81,6 +81,12 @@ TEST_F(VectorTest, whenUsingAtOutOfScopeShouldThrowExcept)
 TEST_F(VectorTest, whenUsingNegativeIndexShouldThrowExcept)
 {
     EXPECT_THROW(vectorTest.at(-1),std::out_of_range);
+}
+
+TEST_F(VectorTest, vectorCanStoreDifferentDataTypes) {
+    std::string testValue {"testCase"};
+    OurVector<std::string> sut(1, testValue);
+    EXPECT_EQ(sut.at(0), testValue);
 }
 
 TEST_F(VectorTest, whenCapacityIsOverCopyElementsToNewArray)
