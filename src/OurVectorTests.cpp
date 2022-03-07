@@ -154,6 +154,7 @@ TEST_F(VectorTest, whenCreatedWithInitializerListArratContainsProviedValues) {
 TEST_F(VectorTest, whenEmplacingElementWithEmplaceElementItIsPropertlyConstructedAndStoredInContainer) {
     OurVector<std::pair<int, int>> sut;
     std::pair<int, int> testPair {1, 5};
-    vectorTest.emplaceBack(1, 5);
-    EXPECT_EQ(vectorTest.at(0), testPair);
+    sut.emplaceBack(1, 5);
+    EXPECT_EQ(sut.at(0).first, testPair.first);
+    EXPECT_EQ(sut.at(0).second, testPair.second);
 }

@@ -2,12 +2,12 @@
 
 template <typename T>
 OurVector<T>::OurVector(int size)
-    : d_size{ static_cast<size_t>(size) }
-    , d_capacity{ d_size }
+    : d_size{static_cast<size_t>(size)}
+    , d_capacity{d_size}
 {
     if (size < 0)
     {
-        throw std::invalid_argument{ "Invalid argument provided" };
+        throw std::invalid_argument{"Invalid argument provided"};
     }
     
     d_arr = new T[d_capacity];
@@ -24,7 +24,7 @@ OurVector<T>::OurVector(int size, T value)
 
 template <typename T>
 OurVector<T>::OurVector(std::initializer_list<T> list) 
-    : d_size{ list.size() },
+    : d_size{list.size()},
     d_capacity{d_size},
     d_arr{new T[d_capacity]}
 {
@@ -78,6 +78,7 @@ void OurVector<T>::pushBack(T val)
     if(d_size>=d_capacity) {
 	    extendCapacity();
     }
+
     d_arr[d_size] = val;
     d_size++;
 }

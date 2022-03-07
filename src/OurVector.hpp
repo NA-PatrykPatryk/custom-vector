@@ -5,6 +5,7 @@ class OurVector
 {
 public:
     using size_t = unsigned long;
+    using RandomAccessIterator = T*;
 
 public:
     OurVector(int size = 0);
@@ -13,13 +14,25 @@ public:
     ~OurVector();
 
 public:
-    using RandomAccessIterator = T*;
     size_t capacity();
     size_t size();
-    void pushBack(T );
+
+    template <typename... Args>
+    void emplaceBack(Args&&... args)
+    {
+        if(d_size >= d_capacity) {
+            extendCapacity();
+        }
+
+        d_arr[d_size] = T(std::forward<Args>(args)...);
+        d_size++;
+    }
+    void pushBack(T);
     void popBack();
+
     const T &at(size_t) const;
     T &at(size_t);
+
     T *getArrRaw() const;
     T *begin() const;
     T *end() const;
