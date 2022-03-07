@@ -90,22 +90,25 @@ void OurVector<T>::popBack()
 }
 
 template <typename T>
-T *OurVector<T>::getArrRaw() const {
+T *OurVector<T>::getArrRaw() const 
+{
 	return d_arr;
 }
 
 template <typename T>
-T *OurVector<T>::begin() const {
+T *OurVector<T>::begin() const 
+{
 	return d_arr;
 }
 
 template <typename T>
-T *OurVector<T>::end() const {
+T *OurVector<T>::end() const 
+{
 	return d_arr + d_size;
 }
 
 template <typename T>
-T &OurVector<T>::at(size_t index) const
+const T &OurVector<T>::at(size_t index) const
 {
     if(index >= d_size)
     {

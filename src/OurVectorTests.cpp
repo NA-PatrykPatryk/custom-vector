@@ -83,7 +83,8 @@ TEST_F(VectorTest, whenUsingNegativeIndexShouldThrowExcept)
     EXPECT_THROW(vectorTest.at(-1),std::out_of_range);
 }
 
-TEST_F(VectorTest, vectorCanStoreDifferentDataTypes) {
+TEST_F(VectorTest, vectorCanStoreDifferentDataTypes) 
+{
     std::string testValue {"testCase"};
     OurVector<std::string> sut(1, testValue);
     EXPECT_EQ(sut.at(0), testValue);
@@ -135,15 +136,6 @@ TEST_F(VectorTest, IteratorRecognizesWhenIncrementedToEnd) {
     OurVector<int>::RandomAccessIterator i = vectorTest.begin();
     i = i + 2;
     EXPECT_EQ(i, vectorTest.end());
-}
-
-TEST_F(VectorTest, UsingAtForChangeSecondElementFromValueAToValueB) {
-    int A = 11;
-    int B = 22;
-    vectorTest.pushBack(10);
-    vectorTest.pushBack(A);
-    vectorTest.at(1) = B;
-    EXPECT_NE(vectorTest.at(1), A);
 }
 
 TEST_F(VectorTest, whenCreatedWithInitializerListArratContainsProviedValues) {
