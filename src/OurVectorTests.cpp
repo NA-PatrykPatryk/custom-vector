@@ -146,12 +146,12 @@ TEST_F(VectorTest, IteratorRecognizesWhenIncrementedToEnd) {
     EXPECT_EQ(i, vectorTest.end());
 }
 
-TEST_F(VectorTest, whenCreatedWithInitializerListArratContainsProviedValues) {
+TEST_F(VectorTest, whenCreatedWithInitializerListShouldContainProviedValues) {
     OurVector<int> sut {2, 5, 1, 5, 2, 6};
     EXPECT_EQ(sut.at(3), 5);
 }
 
-TEST_F(VectorTest, whenEmplacingElementWithEmplaceElementItIsPropertlyConstructedAndStoredInContainer) {
+TEST_F(VectorTest, whenEmplacingElementShouldConstructAndStoreItInContainer) {
     OurVector<std::pair<int, int>> sut;
     std::pair<int, int> testPair {1, 5};
     sut.emplaceBack(1, 5);
