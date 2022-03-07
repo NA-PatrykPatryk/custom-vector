@@ -109,6 +109,11 @@ T *OurVector<T>::end() const
 }
 
 template <typename T>
+void OurVector<T>::clear() {
+    d_size = 0;
+}
+
+template <typename T>
 const T &OurVector<T>::at(size_t index) const
 {
     if(index >= d_size)

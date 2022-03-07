@@ -31,6 +31,7 @@ public:
         d_size++;
     }
 
+    void clear();
     const T &at(size_t) const;
     T &at(size_t);
 

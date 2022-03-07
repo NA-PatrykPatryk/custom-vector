@@ -172,3 +172,9 @@ TEST_F(VectorTest, whenChangingValuewithSquareBracketsTo5ItIs5) {
     sut[0] = testValue;
     EXPECT_EQ(sut[0], testValue);
 }
+
+TEST_F(VectorTest, whenVectorIsClearedItsSizeIs0) {
+    OurVector<int> sut(5, 0);
+    sut.clear();
+    EXPECT_EQ(sut.size(), 0);
+}
