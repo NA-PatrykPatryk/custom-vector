@@ -165,3 +165,10 @@ TEST_F(VectorTest, whenUsingSquareBracketsOperatorShouldReturnSameValueRoundBrac
     EXPECT_EQ(sut[1], sut.at(1));
     EXPECT_EQ(sut[2], sut.at(2));
 }
+
+TEST_F(VectorTest, whenChangingValuewithSquareBracketsTo5ItIs5) {
+    OurVector<int> sut(1, 0);
+    int testValue {5};
+    sut[0] = testValue;
+    EXPECT_EQ(sut[0], testValue);
+}

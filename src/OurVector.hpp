@@ -40,6 +40,7 @@ public:
 
 public:
     const T& operator[](size_t) const;
+    T& operator[](size_t);
 
 private:
     void extendCapacity();
