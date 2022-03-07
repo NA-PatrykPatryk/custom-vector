@@ -17,6 +17,9 @@ public:
     size_t capacity();
     size_t size();
 
+    void pushBack(T);
+    void popBack();
+    
     template <typename... Args>
     void emplaceBack(Args&&... args)
     {
@@ -27,8 +30,6 @@ public:
         d_arr[d_size] = T(std::forward<Args>(args)...);
         d_size++;
     }
-    void pushBack(T);
-    void popBack();
 
     const T &at(size_t) const;
     T &at(size_t);

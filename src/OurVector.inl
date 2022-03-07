@@ -64,7 +64,7 @@ void OurVector<T>::extendCapacity() {
     T* tempArr = new T[newCapacity];
 
     for (size_t i = 0; i < d_size; i++) {
-        tempArr[i] = d_arr[i];
+        tempArr[i] = std::move(d_arr[i]);
     }
     delete [] d_arr;  
 
@@ -79,7 +79,7 @@ void OurVector<T>::pushBack(T val)
 	    extendCapacity();
     }
 
-    d_arr[d_size] = val;
+    d_arr[d_size] = std::move(val);
     d_size++;
 }
 
