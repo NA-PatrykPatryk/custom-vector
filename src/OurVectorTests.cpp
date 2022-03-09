@@ -13,6 +13,14 @@ struct VectorTest :public ::testing::Test
 // Iterator Tests
 // ________________________________________________________________
 
+TEST(VectorIteratorTest, checkIfFindWillFindElement5InVector)
+{
+    OurVector<int> v{ 8, 2, 5 };
+    auto iter = std::find(v.begin(), v.end(), 5);
+
+    EXPECT_EQ(iter, v.begin() + 2);
+}
+
 TEST(VectorIteratorTest, checkIfReverseWillReverseTheElementsInVector)
 {
     OurVector<int> v{ 8, 2, 5 };

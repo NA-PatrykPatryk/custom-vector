@@ -79,6 +79,9 @@ public:
     OurVectorIterator operator+(int offset) const;
     OurVectorIterator operator-(int offset) const;
 
+    OurVectorIterator operator+(const OurVectorIterator& iter) const;
+    OurVectorIterator operator-(const OurVectorIterator& iter) const;
+
     bool operator<(const OurVectorIterator& iter) const;
     bool operator>(const OurVectorIterator& iter) const;
 
