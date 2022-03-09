@@ -2,14 +2,14 @@
 
 template <typename T>
 OurVector<T>::OurVector(int size)
-    : d_size{static_cast<size_t>(size)}
-    , d_capacity{d_size}
+    : d_size{ static_cast<size_t>(size) }
+    , d_capacity{ d_size }
 {
     if (size < 0)
     {
-        throw std::invalid_argument{"Invalid argument provided"};
+        throw std::invalid_argument{ "Invalid argument provided" };
     }
-    
+
     d_arr = new T[d_capacity];
 }
 
@@ -17,18 +17,18 @@ template <typename T>
 OurVector<T>::OurVector(int size, T value)
     : OurVector(size)
 {
-    for(size_t i = 0; i < (size_t)size; i++) {
+    for (size_t i = 0; i < (size_t)size; i++) {
         d_arr[i] = value;
     }
 }
 
 template <typename T>
-OurVector<T>::OurVector(std::initializer_list<T> list) 
-    : d_size{list.size()}
-    , d_capacity{d_size}
-    , d_arr{new T[d_capacity]}
+OurVector<T>::OurVector(std::initializer_list<T> list)
+    : d_size{ list.size() }
+    , d_capacity{ d_size }
+    , d_arr{ new T[d_capacity] }
 {
-    int i {0};
+    int i{ 0 };
     for (auto x : list) {
         d_arr[i] = x;
         ++i;
@@ -36,12 +36,12 @@ OurVector<T>::OurVector(std::initializer_list<T> list)
 }
 
 template <typename T>
-OurVector<T>::~OurVector(){
-    delete [] d_arr;
+OurVector<T>::~OurVector() {
+    delete[] d_arr;
 }
 
 template <typename T>
-size_t OurVector<T>::size() 
+size_t OurVector<T>::size()
 {
     return d_size;
 }
@@ -54,10 +54,11 @@ size_t OurVector<T>::capacity()
 
 template <typename T>
 void OurVector<T>::reAlloc() {
-    size_t newCapacity {};
+    size_t newCapacity{};
     if (d_capacity) {
         newCapacity = d_capacity * 2;
-    } else {
+    }
+    else {
         newCapacity = 1;
     }
 
@@ -66,7 +67,7 @@ void OurVector<T>::reAlloc() {
     for (size_t i = 0; i < d_size; i++) {
         tempArr[i] = std::move(d_arr[i]);
     }
-    delete [] d_arr;  
+    delete[] d_arr;
 
     d_arr = tempArr;
     d_capacity = newCapacity;
@@ -75,8 +76,8 @@ void OurVector<T>::reAlloc() {
 template <typename T>
 void OurVector<T>::pushBack(T val)
 {
-    if(d_size>=d_capacity) {
-	    reAlloc();
+    if (d_size >= d_capacity) {
+        reAlloc();
     }
 
     d_arr[d_size] = std::move(val);
@@ -86,7 +87,7 @@ void OurVector<T>::pushBack(T val)
 template <typename T>
 void OurVector<T>::popBack()
 {
-    if(d_size > 0)
+    if (d_size > 0)
         --d_size;
 }
 
@@ -94,7 +95,7 @@ template <typename T>
 template <typename... Args>
 void OurVector<T>::emplaceBack(Args&&... args)
 {
-    if(d_size >= d_capacity) {
+    if (d_size >= d_capacity) {
         reAlloc();
     }
 
@@ -103,21 +104,21 @@ void OurVector<T>::emplaceBack(Args&&... args)
 }
 
 template <typename T>
-T *OurVector<T>::getArrRaw() const 
+T* OurVector<T>::getArrRaw() const
 {
-	return d_arr;
+    return d_arr;
 }
 
 template <typename T>
-T *OurVector<T>::begin() const 
+typename OurVector<T>::iterator OurVector<T>::begin() const
 {
-	return d_arr;
+    return iterator(d_arr);
 }
 
 template <typename T>
-T *OurVector<T>::end() const 
+T* OurVector<T>::end() const
 {
-	return d_arr + d_size;
+    return d_arr + d_size;
 }
 
 template <typename T>
@@ -126,9 +127,9 @@ void OurVector<T>::clear() {
 }
 
 template <typename T>
-const T &OurVector<T>::at(size_t index) const
+const T& OurVector<T>::at(size_t index) const
 {
-    if(index >= d_size)
+    if (index >= d_size)
     {
         throw std::out_of_range("vector index out of bound");
     }
@@ -137,9 +138,9 @@ const T &OurVector<T>::at(size_t index) const
 }
 
 template <typename T>
-T &OurVector<T>::at(size_t index)
+T& OurVector<T>::at(size_t index)
 {
-    if(index >= d_size)
+    if (index >= d_size)
     {
         throw std::out_of_range("vector index out of bound");
     }
@@ -148,13 +149,13 @@ T &OurVector<T>::at(size_t index)
 }
 
 template <typename T>
-const T &OurVector<T>::operator[](size_t index) const
+const T& OurVector<T>::operator[](size_t index) const
 {
     return d_arr[index];
 }
 
 template <typename T>
-T &OurVector<T>::operator[](size_t index)
+T& OurVector<T>::operator[](size_t index)
 {
     return d_arr[index];
 }

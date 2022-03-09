@@ -32,7 +32,7 @@ public:
     T& at(size_t);
 
     T* getArrRaw() const;
-    T* begin() const;
+    iterator begin() const;
     T* end() const;
 
 public:
