@@ -9,7 +9,7 @@ public:
 public:
     // Iterator is a nested class
     class OurVectorIterator;
-    using iterator = OurVectorIterator;
+    //using iterator = OurVector<T>::OurVectorIterator;
 public:
     OurVector(int size = 0);
     OurVector(int size, T);
@@ -32,15 +32,12 @@ public:
     T& at(size_t);
 
     T* getArrRaw() const;
-    iterator begin() const;
+    OurVectorIterator begin() const;
     T* end() const;
 
 public:
     const T& operator[](size_t) const;
     T& operator[](size_t);
-
-    template <typename Ta>
-    friend bool operator==(const iterator& iter1, const iterator& iter2);
 
 private:
     void reAlloc();

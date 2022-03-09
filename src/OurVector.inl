@@ -111,9 +111,9 @@ T* OurVector<T>::getArrRaw() const
 }
 
 template <typename T>
-typename OurVector<T>::iterator OurVector<T>::begin() const
+typename OurVector<T>::OurVectorIterator OurVector<T>::begin() const
 {
-    return iterator(d_arr);
+    return OurVectorIterator(d_arr);
 }
 
 template <typename T>
@@ -164,4 +164,10 @@ T& OurVector<T>::operator[](size_t index)
 template <typename T>
 void OurVector<T>::shrinkToSize() {
     d_capacity = d_size;
+}
+
+template <typename Ta>
+bool operator==(const typename OurVector<Ta>::iterator& iter1, const typename OurVector<Ta>::iterator& iter2)
+{
+    return iter1.m_ptr == iter1.m_ptr;
 }
