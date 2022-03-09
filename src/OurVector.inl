@@ -163,13 +163,3 @@ template <typename T>
 void OurVector<T>::shrinkToSize() {
     d_capacity = d_size;
 }
-
-//Iterator
-//_______________________________________________
-
-template <typename T>
-OurVector<T>::OurVectorIterator::OurVectorIterator(value_pointer ptr)
-    : m_ptr{ ptr }
-{
-    
-}
