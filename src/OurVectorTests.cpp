@@ -9,11 +9,23 @@ struct VectorTest :public ::testing::Test
 };
 
 
+// Iterator Tests
+// ________________________________________________________________
+TEST(VectorIteratorTest, checkForEachLoopOnOurVector)
+{
+    OurVector<int> v{ 1, 2, 3 };
+    int index{ 0 };
+    for (auto i : v)
+    {
+        EXPECT_EQ(i, v[index]);
+        ++index;
+    }
+}
 
-//Iterator Tests
+
 TEST(VectorIteratorTest, whenEndCalledReturnIteratorToOnePastLastElement)
 {
-    OurVector<int> v{ 1, 2, 3};
+    OurVector<int> v{ 1, 2, 3 };
     auto iter1{ v.end() };
 
     EXPECT_EQ(*(--iter1), v.at(2));
@@ -21,7 +33,7 @@ TEST(VectorIteratorTest, whenEndCalledReturnIteratorToOnePastLastElement)
 
 TEST(VectorIteratorTest, whenVectorIteratorsAreNotEqualReturnFalse)
 {
-    OurVector<int> v{ 1, 2, 3};
+    OurVector<int> v{ 1, 2, 3 };
     auto iter1{ v.begin() };
     auto iter2{ ++(v.begin()) };
 
@@ -32,7 +44,7 @@ TEST(VectorIteratorTest, whenVectorIteratorsAreNotEqualReturnFalse)
 
 TEST(VectorIteratorTest, whenVectorIteratorsAreEqualReturnTrue)
 {
-    OurVector<int> v{ 1, 2, 3};
+    OurVector<int> v{ 1, 2, 3 };
     auto iter1{ v.begin() };
     auto iter2{ v.begin() };
 
@@ -132,6 +144,7 @@ TEST(VectorIteratorTest, whenBeginCalledReturnIteratorToFirstElement)
     EXPECT_EQ(*(v.begin()), v.at(0));
 }
 
+// Iterator Tests end
 // _____________________________________
 
 TEST_F(VectorTest, whenInitializedVectorCapacityEqualZero)
