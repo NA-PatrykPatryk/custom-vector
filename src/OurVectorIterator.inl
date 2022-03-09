@@ -1,5 +1,6 @@
 #include "OurVector.hpp"
 
+
 template <typename T>
 OurVector<T>::OurVectorIterator::OurVectorIterator(value_pointer ptr)
     : m_ptr{ ptr }
@@ -42,6 +43,21 @@ typename OurVector<T>::OurVectorIterator OurVector<T>::OurVectorIterator::operat
 {
     typename OurVector<T>::OurVectorIterator tmp = *this;
     ++(*this);
+    return tmp;
+}
+
+template <typename T>
+typename OurVector<T>::OurVectorIterator& OurVector<T>::OurVectorIterator::operator--()
+{
+    m_ptr--;
+    return *this;
+}
+
+template <typename T>
+typename OurVector<T>::OurVectorIterator OurVector<T>::OurVectorIterator::operator--(int)
+{
+    typename OurVector<T>::OurVectorIterator tmp = *this;
+    --(*this);
     return tmp;
 }
 

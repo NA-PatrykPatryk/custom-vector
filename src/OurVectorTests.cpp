@@ -61,6 +61,31 @@ TEST(VectorIteratorTest, whenMemebersAccessedWithIteratorReturnMemberValues)
 
 }
 
+TEST(VectorIteratorTest, whenIteratorPostDecrementedShouldPointAtFirstElement)
+{
+    OurVector<int> v{ 8, 2, 5 };
+    auto iter = v.begin();
+    iter++;
+    iter--;
+    EXPECT_EQ(*(iter), v.at(0));
+}
+
+TEST(VectorIteratorTest, whenIteratorPostDecrementedTemporaryObjectShouldPointAtSecondElement)
+{
+    OurVector<int> v{ 8, 2, 5 };
+    auto iter = v.begin();
+    ++iter;
+    EXPECT_EQ(*(iter--), v.at(1));
+}
+
+TEST(VectorIteratorTest, whenIteratorPreDecrementedShouldPointAtFirstElement)
+{
+    OurVector<int> v{ 8, 2, 5 };
+    auto iter = v.begin();
+    ++iter;
+    EXPECT_EQ(*(--iter), v.at(0));
+}
+
 TEST(VectorIteratorTest, whenIteratorPostIncrementedShouldPointAtSecondElement)
 {
     OurVector<int> v{ 8, 2, 5 };

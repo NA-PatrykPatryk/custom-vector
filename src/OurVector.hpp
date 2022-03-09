@@ -9,7 +9,6 @@ public:
 public:
     // Iterator is a nested class
     class OurVectorIterator;
-    //using iterator = OurVector<T>::OurVectorIterator;
 public:
     OurVector(int size = 0);
     OurVector(int size, T);
@@ -71,6 +70,9 @@ public:
 
     OurVectorIterator& operator++();
     OurVectorIterator operator++(int);
+
+    OurVectorIterator& operator--();
+    OurVectorIterator operator--(int);
 
     OurVectorIterator operator+(int offset);
     OurVectorIterator operator-(int offset);
