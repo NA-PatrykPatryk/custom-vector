@@ -2,19 +2,19 @@
 
 
 template <typename T>
-OurVector<T>::OurVectorIterator::OurVectorIterator(value_pointer ptr)
+OurVector<T>::OurVectorIterator::OurVectorIterator(pointer ptr)
     : m_ptr{ ptr }
 {
 }
 
 template <typename T>
-typename OurVector<T>::OurVectorIterator::value_reference OurVector<T>::OurVectorIterator::operator*()
+typename OurVector<T>::OurVectorIterator::reference OurVector<T>::OurVectorIterator::operator*()
 {
     return *m_ptr;
 }
 
 template <typename T>
-typename OurVector<T>::OurVectorIterator::value_pointer OurVector<T>::OurVectorIterator::operator->()
+typename OurVector<T>::OurVectorIterator::pointer OurVector<T>::OurVectorIterator::operator->()
 {
     return m_ptr;
 }
@@ -71,4 +71,16 @@ template <typename T>
 typename OurVector<T>::OurVectorIterator OurVector<T>::OurVectorIterator::operator-(int offset) const
 {
     return m_ptr - offset;
+}
+
+template <typename T>
+bool OurVector<T>::OurVectorIterator::operator<(const OurVectorIterator& iter) const
+{
+    return *(this->m_ptr) < *(iter.m_ptr);
+}
+
+template <typename T>
+bool OurVector<T>::OurVectorIterator::operator>(const OurVectorIterator& iter) const
+{
+    return *(this->m_ptr) > *(iter.m_ptr);
 }

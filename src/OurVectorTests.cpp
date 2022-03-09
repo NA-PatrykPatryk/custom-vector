@@ -13,6 +13,16 @@ struct VectorTest :public ::testing::Test
 // Iterator Tests
 // ________________________________________________________________
 
+TEST(VectorIteratorTest, checkIfReverseWillReverseTheElementsInVector)
+{
+    OurVector<int> v{ 8, 2, 5 };
+    std::reverse(v.begin(), v.end());
+
+    EXPECT_EQ(v.at(0), 8);
+    EXPECT_EQ(v.at(1), 2);
+    EXPECT_EQ(v.at(2), 5);
+}
+
 TEST(VectorIteratorTest, checkIfFillWillFillTheVectorWith5)
 {
     OurVector<int> v{ 8, 2, 3 };
@@ -282,33 +292,33 @@ TEST_F(VectorTest, whenVectorHasSize0ShouldHaveSize0AfterPopBack)
     EXPECT_EQ(vectorTest.size(), 0);
 }
 
-// TEST_F(VectorTest, IteratorBeginPointsToFirstElement) {
-//     vectorTest.pushBack(10);
-//     vectorTest.pushBack(11);
-//     EXPECT_EQ(*(vectorTest.begin()), vectorTest.at(0));
-// }
+TEST_F(VectorTest, IteratorBeginPointsToFirstElement) {
+    vectorTest.pushBack(10);
+    vectorTest.pushBack(11);
+    EXPECT_EQ(*(vectorTest.begin()), vectorTest.at(0));
+}
 
-// TEST_F(VectorTest, IteratorBeginNextPointsToSecondElement) {
-//     vectorTest.pushBack(10);
-//     vectorTest.pushBack(11);
-//     EXPECT_EQ(*(vectorTest.begin() + 1), vectorTest.at(1));
-// }
+TEST_F(VectorTest, IteratorBeginNextPointsToSecondElement) {
+    vectorTest.pushBack(10);
+    vectorTest.pushBack(11);
+    EXPECT_EQ(*(vectorTest.begin() + 1), vectorTest.at(1));
+}
 
-// TEST_F(VectorTest, IteratorInitializedAndIncrementedPointsToSecondElement) {
-//     vectorTest.pushBack(10);
-//     vectorTest.pushBack(11);
-//     auto i = vectorTest.begin();
-//     i = i + 1;
-//     EXPECT_EQ(*i, vectorTest.at(1));
-// }
+TEST_F(VectorTest, IteratorInitializedAndIncrementedPointsToSecondElement) {
+    vectorTest.pushBack(10);
+    vectorTest.pushBack(11);
+    auto i = vectorTest.begin();
+    i = i + 1;
+    EXPECT_EQ(*i, vectorTest.at(1));
+}
 
-// TEST_F(VectorTest, IteratorRecognizesWhenIncrementedToEnd) {
-//     vectorTest.pushBack(10);
-//     vectorTest.pushBack(11);
-//     OurVector<int>::RandomAccessIterator i = vectorTest.begin();
-//     i = i + 2;
-//     EXPECT_EQ(i, vectorTest.end());
-// }
+TEST_F(VectorTest, IteratorRecognizesWhenIncrementedToEnd) {
+    vectorTest.pushBack(10);
+    vectorTest.pushBack(11);
+    auto i = vectorTest.begin();
+    i = i + 2;
+    EXPECT_EQ(i, vectorTest.end());
+}
 
 TEST_F(VectorTest, whenCreatedWithInitializerListShouldContainProviedValues) {
     OurVector<int> sut{ 2, 5, 1, 5, 2, 6 };

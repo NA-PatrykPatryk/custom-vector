@@ -56,15 +56,16 @@ class OurVector<T>::OurVectorIterator
 {
 public:
     using iterator_category = std::random_access_iterator_tag;
+    //typedef std::random_access_iterator_tag iterator_category;
     using difference_type = std::ptrdiff_t;
     using value_type = T;
-    using value_pointer = T*;
-    using value_reference = T&;
+    using pointer = T*;
+    using reference = T&;
 public:
-    OurVectorIterator(value_pointer ptr);
+    OurVectorIterator(pointer ptr);
 public:
-    value_reference operator*();
-    value_pointer operator->();
+    reference operator*();
+    pointer operator->();
 
     bool operator==(const OurVectorIterator& iter) const;
     bool operator!=(const OurVectorIterator& iter) const;
@@ -78,8 +79,11 @@ public:
     OurVectorIterator operator+(int offset) const;
     OurVectorIterator operator-(int offset) const;
 
+    bool operator<(const OurVectorIterator& iter) const;
+    bool operator>(const OurVectorIterator& iter) const;
+
 private:
-    value_pointer m_ptr{};
+    pointer m_ptr{};
 };
 
 #include "OurVector.inl"
