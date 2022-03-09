@@ -11,14 +11,37 @@ struct VectorTest :public ::testing::Test
 
 
 //Iterator Tests
-TEST(VectorIteratorTest, whenVectorIteratorsAreEqualReturnTrue)
+
+// TEST(VectorIteratorTest, whenVectorIteratorsAreEqualReturnTrue)
+// {
+//     OurVector<int> v{ 1, 2, 3};
+//     OurVector<int>::iterator iter1{ v.begin() };
+//     OurVector<int>::iterator iter2{ v.begin() };
+//     //iter1 == iter2;
+//     //EXPECT_TRUE(iter1 == iter2);
+//     EXPECT_EQ(1, 2);
+// }
+
+TEST(VectorIteratorTest, when1SubtractedFromIteratorReturn4)
 {
-    OurVector<int> v{ 1, 2, 3};
-    OurVector<int>::iterator iter1{ v.begin() };
-    OurVector<int>::iterator iter2{ v.begin() };
-    iter1 == iter2;
-    //EXPECT_TRUE(iter1 == iter2);
-    EXPECT_EQ(1, 2);
+    OurVector<int> v{ 4, 7 };
+    auto iter = v.begin();
+    ++iter;
+    EXPECT_EQ(*(iter - 1), v.at(0));
+}
+
+TEST(VectorIteratorTest, when2AddedToIteratorReturn5)
+{
+    OurVector<int> v{ 2, 8, 5 };
+    auto iter = v.begin();
+    EXPECT_EQ(*(iter + 2), v.at(2));
+}
+
+TEST(VectorIteratorTest, when1AddedToIteratorReturn8)
+{
+    OurVector<int> v{ 2, 8 };
+    auto iter = v.begin();
+    EXPECT_EQ(*(iter + 1), v.at(1));
 }
 
 TEST(VectorIteratorTest, whenMemebersAccessedWithIteratorReturnMemberValues)

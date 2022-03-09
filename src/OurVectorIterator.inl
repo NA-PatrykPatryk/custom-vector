@@ -33,24 +33,14 @@ typename OurVector<T>::OurVectorIterator OurVector<T>::OurVectorIterator::operat
     return tmp;
 }
 
-template <typename Ta>
-bool operator==(const typename OurVector<Ta>::OurVectorIterator& iter1,
-    const typename OurVector<Ta>::OurVectorIterator& iter2)
+template <typename T>
+typename OurVector<T>::OurVectorIterator OurVector<T>::OurVectorIterator::operator+(int offset)
 {
-    return iter1.m_ptr == iter2.m_ptr;
+    return m_ptr + offset;
 }
 
-
-// template <typename Ta>
-// bool operator==(const typename OurVector<Ta>::OurVectorIterator& iter1,
-//                 const typename OurVector<Ta>::OurVectorIterator& iter2)                           
-// {
-//     return iter1.m_ptr == iter2.m_ptr;
-// }
-
-// template <typename Ta>
-// bool operator!=(const typename OurVector<Ta>::OurVectorIterator& iter1,
-//                 const typename OurVector<Ta>::OurVectorIterator& iter2)                           
-// {
-//     return !(iter1 == iter2);
-// }
+template <typename T>
+typename OurVector<T>::OurVectorIterator OurVector<T>::OurVectorIterator::operator-(int offset)
+{
+    return m_ptr - offset;
+}
