@@ -11,6 +11,13 @@ struct VectorTest :public ::testing::Test
 
 
 //Iterator Tests
+TEST(VectorIteratorTest, whenEndCalledReturnIteratorToOnePastLastElement)
+{
+    OurVector<int> v{ 1, 2, 3};
+    auto iter1{ v.end() };
+
+    EXPECT_EQ(*(--iter1), v.at(2));
+}
 
 TEST(VectorIteratorTest, whenVectorIteratorsAreNotEqualReturnFalse)
 {

@@ -7,6 +7,7 @@ class OurVector
 public:
     // Iterator is a nested class
     class OurVectorIterator;
+
 public:
     OurVector(int size = 0);
     OurVector(int size, T);
@@ -30,7 +31,7 @@ public:
 
     T* getArrRaw() const;
     OurVectorIterator begin() const;
-    T* end() const;
+    OurVectorIterator end() const;
 
 public:
     const T& operator[](size_t) const;
@@ -40,9 +41,9 @@ private:
     void reAlloc();
 
 private:
-    size_t d_size;
-    size_t d_capacity;
-    T* d_arr;
+    size_t m_size;
+    size_t m_capacity;
+    T* m_arr;
 };
 
 // Iterator
