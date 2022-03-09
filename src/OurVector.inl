@@ -123,6 +123,18 @@ typename OurVector<T>::OurVectorIterator OurVector<T>::end() const
 }
 
 template <typename T>
+typename OurVector<T>::OurVectorIterator OurVector<T>::rbegin() const
+{
+    return OurVectorIterator(end() - 1);
+}
+
+template <typename T>
+typename OurVector<T>::OurVectorIterator OurVector<T>::rend() const
+{
+    return OurVectorIterator(begin() - 1);
+}
+
+template <typename T>
 void OurVector<T>::clear() {
     m_size = 0;
 }

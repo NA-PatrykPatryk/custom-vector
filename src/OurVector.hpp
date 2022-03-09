@@ -32,6 +32,8 @@ public:
     T* getArrRaw() const;
     OurVectorIterator begin() const;
     OurVectorIterator end() const;
+    OurVectorIterator rbegin() const;
+    OurVectorIterator rend() const;
 
 public:
     const T& operator[](size_t) const;
@@ -73,8 +75,8 @@ public:
     OurVectorIterator& operator--();
     OurVectorIterator operator--(int);
 
-    OurVectorIterator operator+(int offset);
-    OurVectorIterator operator-(int offset);
+    OurVectorIterator operator+(int offset) const;
+    OurVectorIterator operator-(int offset) const;
 
 private:
     value_pointer m_ptr{};

@@ -62,13 +62,13 @@ typename OurVector<T>::OurVectorIterator OurVector<T>::OurVectorIterator::operat
 }
 
 template <typename T>
-typename OurVector<T>::OurVectorIterator OurVector<T>::OurVectorIterator::operator+(int offset)
+typename OurVector<T>::OurVectorIterator OurVector<T>::OurVectorIterator::operator+(int offset) const
 {
     return m_ptr + offset;
 }
 
 template <typename T>
-typename OurVector<T>::OurVectorIterator OurVector<T>::OurVectorIterator::operator-(int offset)
+typename OurVector<T>::OurVectorIterator OurVector<T>::OurVectorIterator::operator-(int offset) const
 {
     return m_ptr - offset;
 }

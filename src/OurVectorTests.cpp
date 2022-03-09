@@ -1,6 +1,7 @@
 #include "gtest/gtest.h"
 #include "OurVector.hpp"
 #include <stdexcept>
+#include <algorithm>
 
 
 struct VectorTest :public ::testing::Test
@@ -11,6 +12,30 @@ struct VectorTest :public ::testing::Test
 
 // Iterator Tests
 // ________________________________________________________________
+
+TEST(VectorIteratorTest, checkIfFillWillFillTheVectorWith5)
+{
+    OurVector<int> v{ 8, 2, 3 };
+    std::fill(v.begin(), v.end(), 5);
+
+    for (auto i : v)
+    {
+        EXPECT_EQ(i, 5);
+    }
+}
+
+TEST(VectorIteratorTest, whenRendCalledReturnIteratorToElementOnBeforeTheFirst)
+{
+    OurVector<int> v{ 8, 2, 5 };
+    EXPECT_EQ(*(v.rend() + 1), v.at(0));
+}
+
+TEST(VectorIteratorTest, whenRbeginCalledReturnIteratorToLastElement)
+{
+    OurVector<int> v{ 8, 2, 5 };
+    EXPECT_EQ(*(v.rbegin()), v.at(2));
+}
+
 TEST(VectorIteratorTest, checkForEachLoopOnOurVector)
 {
     OurVector<int> v{ 1, 2, 3 };
