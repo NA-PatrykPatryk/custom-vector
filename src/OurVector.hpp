@@ -65,8 +65,8 @@ public:
     value_reference operator*();
     value_pointer operator->();
 
-    bool operator==(const OurVectorIterator& rhs) const;
-    bool operator!=(const OurVectorIterator& rhs) const;
+    bool operator==(const OurVectorIterator& iter) const;
+    bool operator!=(const OurVectorIterator& iter) const;
 
     OurVectorIterator& operator++();
     OurVectorIterator operator++(int);

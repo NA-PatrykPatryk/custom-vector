@@ -20,15 +20,15 @@ typename OurVector<T>::OurVectorIterator::value_pointer OurVector<T>::OurVectorI
 }
 
 template <typename T>
-bool OurVector<T>::OurVectorIterator::operator==(const OurVectorIterator& rhs) const
+bool OurVector<T>::OurVectorIterator::operator==(const OurVectorIterator& iter) const
 {
-    return m_ptr == rhs.m_ptr;
+    return m_ptr == iter.m_ptr;
 }
 
 template <typename T>
-bool OurVector<T>::OurVectorIterator::operator!=(const OurVectorIterator& rhs) const
+bool OurVector<T>::OurVectorIterator::operator!=(const OurVectorIterator& iter) const
 {
-    return (*this == rhs);
+    return !(*this == iter);
 }
 
 template <typename T>

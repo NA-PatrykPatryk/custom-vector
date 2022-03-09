@@ -12,15 +12,26 @@ struct VectorTest :public ::testing::Test
 
 //Iterator Tests
 
-// TEST(VectorIteratorTest, whenVectorIteratorsAreEqualReturnTrue)
-// {
-//     OurVector<int> v{ 1, 2, 3};
-//     OurVector<int>::OurVectorIterator iter1{ v.begin() };
-//     OurVector<int>::OurVectorIterator iter2{ v.begin() };
-//     iter1 == iter2;
-//     //EXPECT_TRUE(iter1 == iter2);
-//     EXPECT_EQ(1, 2);
-// }
+TEST(VectorIteratorTest, whenVectorIteratorsAreNotEqualReturnFalse)
+{
+    OurVector<int> v{ 1, 2, 3};
+    auto iter1{ v.begin() };
+    auto iter2{ ++(v.begin()) };
+
+    EXPECT_FALSE(iter1 == iter2);
+    EXPECT_TRUE(iter1 != iter2);
+
+}
+
+TEST(VectorIteratorTest, whenVectorIteratorsAreEqualReturnTrue)
+{
+    OurVector<int> v{ 1, 2, 3};
+    auto iter1{ v.begin() };
+    auto iter2{ v.begin() };
+
+    EXPECT_TRUE(iter1 == iter2);
+    EXPECT_FALSE(iter1 != iter2);
+}
 
 TEST(VectorIteratorTest, when1SubtractedFromIteratorReturn4)
 {
