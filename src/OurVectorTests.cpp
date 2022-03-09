@@ -3,10 +3,45 @@
 #include <stdexcept>
 
 
+//fixtures
+
 struct VectorTest:public ::testing::Test
 {
     OurVector<int> vectorTest;
 };
+
+// iterator tests
+
+TEST_F(VectorTest, IteratorBeginPointsToFirstElement) {
+    vectorTest.pushBack(10);
+    vectorTest.pushBack(11);
+    EXPECT_EQ(*(vectorTest.begin()), vectorTest.at(0));
+}
+
+TEST_F(VectorTest, IteratorBeginNextPointsToSecondElement) {
+    vectorTest.pushBack(10);
+    vectorTest.pushBack(11);
+
+    EXPECT_EQ(*(vectorTest.begin()++), vectorTest.at(1));
+}
+
+TEST_F(VectorTest, IteratorInitializedAndIncrementedPointsToSecondElement) {
+    vectorTest.pushBack(10);
+    vectorTest.pushBack(11);
+    auto i = vectorTest.begin();
+    i = i++;
+    EXPECT_EQ(*i, vectorTest.at(1));
+}
+
+// TEST_F(VectorTest, IteratorRecognizesWhenIncrementedToEnd) {
+//     vectorTest.pushBack(10);
+//     vectorTest.pushBack(11);
+//     OurVector<int>::Iterator i = vectorTest.begin();
+//     i = i + 2;
+//     EXPECT_EQ(i, vectorTest.end());
+// }
+
+///////vector tests
 
 TEST_F(VectorTest, whenInitializedVectorCapacityEqualZero) 
 {
@@ -116,34 +151,6 @@ TEST_F(VectorTest, whenVectorHasSize0ShouldHaveSize0AfterPopBack)
 {
     vectorTest.popBack();
     EXPECT_EQ(vectorTest.size(), 0);
-}
-
-TEST_F(VectorTest, IteratorBeginPointsToFirstElement) {
-    vectorTest.pushBack(10);
-    vectorTest.pushBack(11);
-    EXPECT_EQ(*(vectorTest.begin()), vectorTest.at(0));
-}
-
-TEST_F(VectorTest, IteratorBeginNextPointsToSecondElement) {
-    vectorTest.pushBack(10);
-    vectorTest.pushBack(11);
-    EXPECT_EQ(*(vectorTest.begin() + 1), vectorTest.at(1));
-}
-
-TEST_F(VectorTest, IteratorInitializedAndIncrementedPointsToSecondElement) {
-    vectorTest.pushBack(10);
-    vectorTest.pushBack(11);
-    auto i = vectorTest.begin();
-    i = i + 1;
-    EXPECT_EQ(*i, vectorTest.at(1));
-}
-
-TEST_F(VectorTest, IteratorRecognizesWhenIncrementedToEnd) {
-    vectorTest.pushBack(10);
-    vectorTest.pushBack(11);
-    OurVector<int>::RandomAccessIterator i = vectorTest.begin();
-    i = i + 2;
-    EXPECT_EQ(i, vectorTest.end());
 }
 
 TEST_F(VectorTest, whenCreatedWithInitializerListShouldContainProviedValues) {
