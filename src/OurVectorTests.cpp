@@ -3,17 +3,77 @@
 #include <stdexcept>
 
 
-struct VectorTest:public ::testing::Test
+struct VectorTest :public ::testing::Test
 {
     OurVector<int> vectorTest;
 };
 
-TEST_F(VectorTest, whenInitializedVectorCapacityEqualZero) 
+
+
+//Iterator Tests
+TEST(VectorIteratorTest, whenVectorIteratorsAreEqualReturnTrue)
+{
+    OurVector<int> v{ 1, 2, 3};
+    OurVector<int>::iterator iter1{ v.begin() };
+    OurVector<int>::iterator iter2{ v.begin() };
+    iter1 == iter2;
+    //EXPECT_TRUE(iter1 == iter2);
+    EXPECT_EQ(1, 2);
+}
+
+TEST(VectorIteratorTest, whenMemebersAccessedWithIteratorReturnMemberValues)
+{
+    struct Pair
+    {
+        int x{ 3 };
+        int y{ 6 };
+    };
+
+    Pair a{};
+    OurVector<Pair> v{ a };
+    auto iter = v.begin();
+
+    EXPECT_EQ(iter->x, 3);
+    EXPECT_EQ(iter->y, 6);
+
+}
+
+TEST(VectorIteratorTest, whenIteratorPostIncrementedShouldPointAtSecondElement)
+{
+    OurVector<int> v{ 8, 2, 5 };
+    auto iter = v.begin();
+    iter++;
+    EXPECT_EQ(*(iter), v.at(1));
+}
+
+TEST(VectorIteratorTest, whenIteratorPostIncrementedTemporaryObjectShouldPointAtFirstElement)
+{
+    OurVector<int> v{ 8, 2, 5 };
+    auto iter = v.begin();
+    EXPECT_EQ(*(iter++), v.at(0));
+}
+
+TEST(VectorIteratorTest, whenIteratorPreIncrementedShouldPointAtSecondElement)
+{
+    OurVector<int> v{ 8, 2, 5 };
+    auto iter = v.begin();
+    EXPECT_EQ(*(++iter), v.at(1));
+}
+
+TEST(VectorIteratorTest, whenBeginCalledReturnIteratorToFirstElement)
+{
+    OurVector<int> v{ 8, 2, 5 };
+    EXPECT_EQ(*(v.begin()), v.at(0));
+}
+
+// _____________________________________
+
+TEST_F(VectorTest, whenInitializedVectorCapacityEqualZero)
 {
     EXPECT_EQ(vectorTest.capacity(), 0);
 }
 
-TEST_F(VectorTest, sizeMethodShouldReturn0WhenClassInitialized) 
+TEST_F(VectorTest, sizeMethodShouldReturn0WhenClassInitialized)
 {
     EXPECT_EQ(vectorTest.size(), 0);
 }
@@ -24,7 +84,7 @@ TEST_F(VectorTest, WhenInitWithNegativeSizeThenDoNothing)
     EXPECT_THROW(OurVector<int> vec(-1, 2), std::invalid_argument);
 }
 
-TEST_F(VectorTest, whenInputIs6SizeShouldReturn6) 
+TEST_F(VectorTest, whenInputIs6SizeShouldReturn6)
 {
     OurVector<int> vec(6);
     EXPECT_EQ(vec.size(), 6);
@@ -33,20 +93,20 @@ TEST_F(VectorTest, whenInputIs6SizeShouldReturn6)
 /*
 TEST_F(VectorTest, WhenCapacityExtensionCalledThenCapacityIsExtended)
 {
-	auto capacityBeforeExtension = vectorTest.capacity();
-	vectorTest.extendCapacity();
-	EXPECT_TRUE(vectorTest.capacity() > capacityBeforeExtension);
+    auto capacityBeforeExtension = vectorTest.capacity();
+    vectorTest.extendCapacity();
+    EXPECT_TRUE(vectorTest.capacity() > capacityBeforeExtension);
 }
 
 TEST_F(VectorTest, WhenCapacityExtensionCalledThenReferenceToCapacityMinusOneIsValid) {
     OurVector<int> sut(1);
-	sut.getArrRaw()[vectorTest.capacity() - 1] = 0;
-	sut.extendCapacity();
-	sut.getArrRaw()[vectorTest.capacity() - 1] = 0;
+    sut.getArrRaw()[vectorTest.capacity() - 1] = 0;
+    sut.extendCapacity();
+    sut.getArrRaw()[vectorTest.capacity() - 1] = 0;
 }
 */
 
-TEST_F(VectorTest, whenIntisPushBackItsOnVectorIndex0) 
+TEST_F(VectorTest, whenIntisPushBackItsOnVectorIndex0)
 {
     vectorTest.pushBack(1);
     EXPECT_EQ(vectorTest.at(0), 1);
@@ -75,25 +135,25 @@ TEST_F(VectorTest, WhenVectorFilledWithSixFoursExpect4AtIndex3)
 
 TEST_F(VectorTest, whenUsingAtOutOfScopeShouldThrowExcept)
 {
-    EXPECT_THROW(vectorTest.at(6),std::out_of_range);
+    EXPECT_THROW(vectorTest.at(6), std::out_of_range);
 }
 
 TEST_F(VectorTest, whenUsingNegativeIndexShouldThrowExcept)
 {
-    EXPECT_THROW(vectorTest.at(-1),std::out_of_range);
+    EXPECT_THROW(vectorTest.at(-1), std::out_of_range);
 }
 
 TEST_F(VectorTest, whenChangedVectorValueWithAtMethodTo5ItIs5)
 {
     OurVector<int> vec(1);
-    int expectedValue {5};
+    int expectedValue{ 5 };
     vec.at(0) = 5;
     EXPECT_EQ(vec.at(0), expectedValue);
 }
 
-TEST_F(VectorTest, vectorCanStoreDifferentDataTypes) 
+TEST_F(VectorTest, vectorCanStoreDifferentDataTypes)
 {
-    std::string testValue {"testCase"};
+    std::string testValue{ "testCase" };
     OurVector<std::string> sut(1, testValue);
     EXPECT_EQ(sut.at(0), testValue);
 }
@@ -101,8 +161,8 @@ TEST_F(VectorTest, vectorCanStoreDifferentDataTypes)
 TEST_F(VectorTest, whenCapacityIsOverCopyElementsToNewArray)
 {
     vectorTest.pushBack(2);
-    EXPECT_EQ(vectorTest.size(),1);
-    EXPECT_EQ(vectorTest.capacity(),1);
+    EXPECT_EQ(vectorTest.size(), 1);
+    EXPECT_EQ(vectorTest.capacity(), 1);
 }
 
 TEST_F(VectorTest, whenVectorHasSize2ShouldHaveSize1AfterPopBack)
@@ -147,20 +207,20 @@ TEST_F(VectorTest, whenVectorHasSize0ShouldHaveSize0AfterPopBack)
 // }
 
 TEST_F(VectorTest, whenCreatedWithInitializerListShouldContainProviedValues) {
-    OurVector<int> sut {2, 5, 1, 5, 2, 6};
+    OurVector<int> sut{ 2, 5, 1, 5, 2, 6 };
     EXPECT_EQ(sut.at(3), 5);
 }
 
 TEST_F(VectorTest, whenEmplacingElementShouldStoreItInContainer) {
     OurVector<std::pair<int, int>> sut;
-    std::pair<int, int> testPair {1, 5};
+    std::pair<int, int> testPair{ 1, 5 };
     sut.emplaceBack(1, 5);
     EXPECT_EQ(sut.at(0).first, testPair.first);
     EXPECT_EQ(sut.at(0).second, testPair.second);
 }
 
 TEST_F(VectorTest, whenUsingSquareBracketsOperatorShouldReturnSameValueRoundBracketsDo) {
-    OurVector<int> sut{1, 2, 3};
+    OurVector<int> sut{ 1, 2, 3 };
     EXPECT_EQ(sut[0], sut.at(0));
     EXPECT_EQ(sut[1], sut.at(1));
     EXPECT_EQ(sut[2], sut.at(2));
@@ -168,7 +228,7 @@ TEST_F(VectorTest, whenUsingSquareBracketsOperatorShouldReturnSameValueRoundBrac
 
 TEST_F(VectorTest, whenChangingValuewithSquareBracketsTo5ItIs5) {
     OurVector<int> sut(1, 0);
-    int testValue {5};
+    int testValue{ 5 };
     sut[0] = testValue;
     EXPECT_EQ(sut[0], testValue);
 }

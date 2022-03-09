@@ -4,7 +4,6 @@ template <typename T>
 OurVector<T>::OurVectorIterator::OurVectorIterator(value_pointer ptr)
     : m_ptr{ ptr }
 {
-
 }
 
 template <typename T>
@@ -14,7 +13,7 @@ typename OurVector<T>::OurVectorIterator::value_reference OurVector<T>::OurVecto
 }
 
 template <typename T>
-typename OurVector<T>::OurVectorIterator::value_reference OurVector<T>::OurVectorIterator::operator->()
+typename OurVector<T>::OurVectorIterator::value_pointer OurVector<T>::OurVectorIterator::operator->()
 {
     return m_ptr;
 }
@@ -36,14 +35,22 @@ typename OurVector<T>::OurVectorIterator OurVector<T>::OurVectorIterator::operat
 
 template <typename Ta>
 bool operator==(const typename OurVector<Ta>::OurVectorIterator& iter1,
-                const typename OurVector<Ta>::OurVectorIterator& iter2)                           
+    const typename OurVector<Ta>::OurVectorIterator& iter2)
 {
     return iter1.m_ptr == iter2.m_ptr;
 }
 
-template <typename Ta>
-bool operator!=(const typename OurVector<Ta>::OurVectorIterator& iter1,
-                const typename OurVector<Ta>::OurVectorIterator& iter2)                           
-{
-    return !(iter1 == iter2);
-}
+
+// template <typename Ta>
+// bool operator==(const typename OurVector<Ta>::OurVectorIterator& iter1,
+//                 const typename OurVector<Ta>::OurVectorIterator& iter2)                           
+// {
+//     return iter1.m_ptr == iter2.m_ptr;
+// }
+
+// template <typename Ta>
+// bool operator!=(const typename OurVector<Ta>::OurVectorIterator& iter1,
+//                 const typename OurVector<Ta>::OurVectorIterator& iter2)                           
+// {
+//     return !(iter1 == iter2);
+// }

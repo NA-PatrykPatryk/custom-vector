@@ -29,7 +29,8 @@ OurVector<T>::OurVector(std::initializer_list<T> list)
     , d_arr{ new T[d_capacity] }
 {
     int i{ 0 };
-    for (auto x : list) {
+    for (auto x : list)
+    {
         d_arr[i] = x;
         ++i;
     }

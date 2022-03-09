@@ -9,7 +9,7 @@ public:
 public:
     // Iterator is a nested class
     class OurVectorIterator;
-    using iterator = OurVectorIterator;
+    using iterator = OurVector<T>::OurVectorIterator;
 public:
     OurVector(int size = 0);
     OurVector(int size, T);
@@ -64,18 +64,21 @@ public:
     OurVectorIterator(value_pointer ptr);
 public:
     value_reference operator*();
-    value_reference operator->();
+    value_pointer operator->();
 
     OurVectorIterator& operator++();
     OurVectorIterator operator++(int);
 
-    template <typename Ta>
-    friend bool operator==(const OurVector<T>::OurVectorIterator& iter1,
-                           const OurVector<T>::OurVectorIterator& iter2);
+    // template <typename Ta>
+    // friend bool operator==(const typename OurVector<Ta>::OurVectorIterator& iter1,
+    //     const typename OurVector<Ta>::OurVectorIterator& iter2)
+    // {
+    //     return iter1.m_ptr == iter2.m_ptr;
+    // }
 
-    template <typename Ta>
-    friend bool operator!=(const OurVector<T>::OurVectorIterator& iter1,
-                           const OurVector<T>::OurVectorIterator& iter2);
+    // template <typename Ta>
+    // friend bool operator!=(const OurVector<T>::OurVectorIterator& iter1,
+    //     const OurVector<T>::OurVectorIterator& iter2);
 private:
     value_pointer m_ptr{};
 };
