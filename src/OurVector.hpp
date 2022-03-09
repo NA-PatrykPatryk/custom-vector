@@ -5,9 +5,11 @@ template <typename T>
 class OurVector
 {
 public:
-    // using size_t = unsigned long;
     using RandomAccessIterator = T*;
-
+public:
+    // Iterator is a nested class
+    class OurVectorIterator;
+    using iterator = OurVectorIterator;
 public:
     OurVector(int size = 0);
     OurVector(int size, T);
@@ -36,10 +38,6 @@ public:
 public:
     const T& operator[](size_t) const;
     T& operator[](size_t);
-
-public:
-    // Iterator is a nested class
-    class OurVectorIterator;
 
 private:
     void reAlloc();
