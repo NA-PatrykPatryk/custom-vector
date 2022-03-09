@@ -5,8 +5,6 @@ template <typename T>
 class OurVector
 {
 public:
-    using RandomAccessIterator = T*;
-public:
     // Iterator is a nested class
     class OurVectorIterator;
 public:
