@@ -56,7 +56,7 @@ private:
 template <typename T>
 class OurVector<T>::OurVectorIterator
 {
-private:
+public:
     using iterator_category = std::random_access_iterator_tag;
     using difference_type = std::ptrdiff_t;
     using value_type = T;
@@ -64,6 +64,20 @@ private:
     using value_reference = T&;
 public:
     OurVectorIterator(value_pointer ptr);
+public:
+    value_reference operator*();
+    value_reference operator->();
+
+    OurVectorIterator& operator++();
+    OurVectorIterator operator++(int);
+
+    template <typename Ta>
+    friend bool operator==(const OurVector<T>::OurVectorIterator& iter1,
+                           const OurVector<T>::OurVectorIterator& iter2);
+
+    template <typename Ta>
+    friend bool operator!=(const OurVector<T>::OurVectorIterator& iter1,
+                           const OurVector<T>::OurVectorIterator& iter2);
 private:
     value_pointer m_ptr{};
 };
