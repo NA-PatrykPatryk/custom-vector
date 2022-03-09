@@ -165,9 +165,3 @@ template <typename T>
 void OurVector<T>::shrinkToSize() {
     d_capacity = d_size;
 }
-
-template <typename Ta>
-bool operator==(const typename OurVector<Ta>::iterator& iter1, const typename OurVector<Ta>::iterator& iter2)
-{
-    return iter1.m_ptr == iter1.m_ptr;
-}
