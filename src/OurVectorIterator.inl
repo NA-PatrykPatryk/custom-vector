@@ -84,3 +84,15 @@ bool OurVector<T>::OurVectorIterator::operator>(const OurVectorIterator& iter) c
 {
     return *(this->m_ptr) > *(iter.m_ptr);
 }
+
+template <typename T>
+typename OurVector<T>::OurVectorIterator::difference_type OurVector<T>::OurVectorIterator::operator+(const OurVectorIterator& iter) const
+{
+    return this->m_ptr + iter.m_ptr;
+}
+
+template <typename T>
+typename OurVector<T>::OurVectorIterator::difference_type OurVector<T>::OurVectorIterator::operator-(const OurVectorIterator& iter) const
+{
+    return this->m_ptr - iter.m_ptr;
+}
