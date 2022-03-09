@@ -91,6 +91,18 @@ void OurVector<T>::popBack()
 }
 
 template <typename T>
+template <typename... Args>
+void OurVector<T>::emplaceBack(Args&&... args)
+{
+    if(d_size >= d_capacity) {
+        reAlloc();
+    }
+
+    d_arr[d_size] = T(std::forward<Args>(args)...);
+    d_size++;
+}
+
+template <typename T>
 T *OurVector<T>::getArrRaw() const 
 {
 	return d_arr;

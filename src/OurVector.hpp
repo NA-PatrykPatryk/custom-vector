@@ -22,15 +22,7 @@ public:
     void popBack();
     
     template <typename... Args>
-    void emplaceBack(Args&&... args)
-    {
-        if(d_size >= d_capacity) {
-            reAlloc();
-        }
-
-        d_arr[d_size] = T(std::forward<Args>(args)...);
-        d_size++;
-    }
+    void emplaceBack(Args&&... args);
 
     void clear();
     const T &at(size_t) const;
