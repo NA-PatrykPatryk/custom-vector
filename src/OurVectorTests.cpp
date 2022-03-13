@@ -376,11 +376,12 @@ TEST_F(VectorTest, whenVectorIsShrunkToSizeItsCapacityEqualsSize) {
 
 TEST_F(VectorTest, whenInsertingValueToVectorWithIteratorItTakesPlaceOfOldValueAndOldValueIsShifted) {
     int val1 = 12;
-    OurVector<int> sut(10);
-    sut.clear();
-    sut.pushBack(11);
-    sut.pushBack(13);
-    sut.pushBack(14);
+    // OurVector<int> sut(10);
+    // sut.clear();
+    // sut.pushBack(11);
+    // sut.pushBack(13);
+    // sut.pushBack(14);
+    OurVector<int> sut{ 11, 13, 14};
     auto iter = sut.begin() + 1;
     sut.insert(iter, val1);
     EXPECT_EQ(*iter, val1);

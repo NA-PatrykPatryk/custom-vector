@@ -37,7 +37,7 @@ OurVector<T>::OurVector(std::initializer_list<T> list)
 }
 
 template <typename T>
-OurVector<T>::~OurVector() 
+OurVector<T>::~OurVector()
 {
     delete[] m_arr;
 }
@@ -97,7 +97,7 @@ template <typename T>
 template <typename... Args>
 void OurVector<T>::emplaceBack(Args&&... args)
 {
-    if (m_size >= m_capacity) 
+    if (m_size >= m_capacity)
     {
         reAlloc();
     }
@@ -110,50 +110,26 @@ template <typename T>
 void OurVector<T>::insert(OurVectorIterator& insertIterator, T value)
 {
 
-    if (m_size >= m_capacity) 
+    if (m_size >= m_capacity)
     {
+        std::ptrdiff_t diff{ insertIterator - begin() };
         reAlloc();
+        insertIterator = begin() + diff;
     }
 
-    for(auto it = end(); it != insertIterator; --it)
+    for (auto it = end(); it != insertIterator; --it)
     {
         *it = *(it - 1);
     }
 
     *insertIterator = value;
     ++m_size;
-
-
-    // if (m_size >= m_capacity) 
-    // {
-    //     m_capacity *= 2;
-    // }
-
-    // T* tempArr = new T[m_capacity];
-
-    // int i {0};
-    // auto it = begin();
-    // for (; it != insertIterator; ++it, ++i)
-    // {
-    //     tempArr[i] = std::move(m_arr[i]);
-    // }
-
-    // tempArr[i] = std::move(value);
-    // insertIterator = &(tempArr[i]);
-
-    // for (; it != end(); ++it, ++i)
-    // {
-    //     tempArr[i + 1] = m_arr[i];
-    // }
-
-    // delete[] m_arr;
-    // m_arr = tempArr;
 }
 
 template <typename T>
 void OurVector<T>::erase(OurVectorIterator& iterator)
 {
-    while(iterator != end())
+    while (iterator != end())
     {
         *iterator = *(iterator + 1);;
         ++iterator;
@@ -232,7 +208,7 @@ T& OurVector<T>::operator[](size_t index)
 }
 
 template <typename T>
-void OurVector<T>::shrinkToSize() 
+void OurVector<T>::shrinkToSize()
 {
     m_capacity = m_size;
 }
