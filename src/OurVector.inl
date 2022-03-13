@@ -37,7 +37,8 @@ OurVector<T>::OurVector(std::initializer_list<T> list)
 }
 
 template <typename T>
-OurVector<T>::~OurVector() {
+OurVector<T>::~OurVector() 
+{
     delete[] m_arr;
 }
 
@@ -216,6 +217,7 @@ T& OurVector<T>::operator[](size_t index)
 }
 
 template <typename T>
-void OurVector<T>::shrinkToSize() {
+void OurVector<T>::shrinkToSize() 
+{
     m_capacity = m_size;
 }
