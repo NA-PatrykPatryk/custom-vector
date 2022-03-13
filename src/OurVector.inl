@@ -96,12 +96,24 @@ template <typename T>
 template <typename... Args>
 void OurVector<T>::emplaceBack(Args&&... args)
 {
-    if (m_size >= m_capacity) {
+    if (m_size >= m_capacity) 
+    {
         reAlloc();
     }
 
     m_arr[m_size] = T(std::forward<Args>(args)...);
     m_size++;
+}
+
+template <typename T>
+void OurVector<T>::insert(OurVectorIterator iterator, T value)
+{
+    if (m_size >= m_capacity) 
+    {
+        reAlloc();
+    }
+
+    T temp {nullptr};
 }
 
 template <typename T>
