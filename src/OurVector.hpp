@@ -25,7 +25,7 @@ public:
     template <typename... Args>
     void emplaceBack(Args&&... args);
     
-    void insert(OurVectorIterator, T);
+    void insert(OurVectorIterator&, T);
 
     void clear();
     const T& at(size_t) const;

@@ -106,14 +106,34 @@ void OurVector<T>::emplaceBack(Args&&... args)
 }
 
 template <typename T>
-void OurVector<T>::insert(OurVectorIterator iterator, T value)
+void OurVector<T>::insert(OurVectorIterator& insertIterator, T value)
 {
+    (void)insertIterator;
+    (void)value;
     if (m_size >= m_capacity) 
     {
-        reAlloc();
+        m_capacity *= 2;
     }
 
-    T temp {nullptr};
+    T* tempArr = new T[m_capacity];
+
+    int i {0};
+    auto it = begin();
+    for (; it != insertIterator; ++it, ++i)
+    {
+        tempArr[i] = m_arr[i];
+    }
+
+    tempArr[i] = std::move(value);
+    insertIterator = &(tempArr[i]);
+
+    for (; it != end(); ++it, ++i)
+    {
+        tempArr[i + 1] = m_arr[i];
+    }
+
+    delete[] m_arr;
+    m_arr = tempArr;
 }
 
 template <typename T>

@@ -117,7 +117,7 @@ TEST(VectorIteratorTest, when1AddedToIteratorReturn8)
     EXPECT_EQ(*(iter + 1), v.at(1));
 }
 
-TEST(VectorIteratorTest, whenMemebersAccessedWithIteratorReturnMemberValues)
+TEST(VectorIteratorTest, whenMembersAccessedWithIteratorReturnMemberValues)
 {
     struct Pair
     {
@@ -374,16 +374,11 @@ TEST_F(VectorTest, whenVectorIsShrunkToSizeItsCapacityEqualsSize) {
     EXPECT_EQ(sut.size(), sut.capacity());
 }
 
-TEST_F(VectorTest, whenInsertingValueToVectorWithIteratorItTakesPlaceOfOldValueAndOldValueIsPushed) {
-    int val1 = 4;
-    int val2 = 3;
-    vectorTest.pushBack(1);
-    vectorTest.pushBack(2);
-    vectorTest.pushBack(val1);
-    vectorTest.pushBack(5);
-    auto it = vectorTest.begin() + 2;
-    vectorTest.insert(it, val2);
-    EXPECT_EQ(vectorTest.at(2) == val2);
-    EXPECT_EQ(vectorTest.at(3) == val1);
-
+TEST_F(VectorTest, whenInsertingValueToVectorWithIteratorItTakesPlaceOfOldValueAndOldValueIsShifted) {
+    int val1 = 12;
+    OurVector<int> sut{11, 13, 14};
+    auto iter = sut.begin() + 1;
+    sut.insert(iter, val1);
+    EXPECT_EQ(*iter, val1);
+    EXPECT_EQ(*(iter + 1), 13);
 }
