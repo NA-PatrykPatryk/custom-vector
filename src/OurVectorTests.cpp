@@ -373,3 +373,17 @@ TEST_F(VectorTest, whenVectorIsShrunkToSizeItsCapacityEqualsSize) {
     sut.shrinkToSize();
     EXPECT_EQ(sut.size(), sut.capacity());
 }
+
+TEST_F(VectorTest, whenInsertingValueToVectorWithIteratorItTakesPlaceOfOldValueAndOldValueIsPushed) {
+    int val1 = 4;
+    int val2 = 3;
+    vectorTest.pushBack(1);
+    vectorTest.pushBack(2);
+    vectorTest.pushBack(val1);
+    vectorTest.pushBack(5);
+    auto it = vectorTest.begin() + 2;
+    vectorTest.insert(it, val2);
+    EXPECT_EQ(vectorTest.at(2) == val2);
+    EXPECT_EQ(vectorTest.at(3) == val1);
+
+}
