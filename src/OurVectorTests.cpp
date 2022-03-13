@@ -382,3 +382,11 @@ TEST_F(VectorTest, whenInsertingValueToVectorWithIteratorItTakesPlaceOfOldValueA
     EXPECT_EQ(*iter, val1);
     EXPECT_EQ(*(iter + 1), 13);
 }
+
+TEST_F(VectorTest, whenErasingElementFollowingElementIsShiftedOnItsPlaceAndIteratorIsInvalidated) {
+    OurVector<int> sut{12, 13, 14};
+    auto iter = sut.begin() + 1;
+    sut.erase(iter);
+    EXPECT_EQ(iter, nullptr);
+    EXPECT_EQ(sut.at(1), 14);
+}

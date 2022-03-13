@@ -108,8 +108,6 @@ void OurVector<T>::emplaceBack(Args&&... args)
 template <typename T>
 void OurVector<T>::insert(OurVectorIterator& insertIterator, T value)
 {
-    (void)insertIterator;
-    (void)value;
     if (m_size >= m_capacity) 
     {
         m_capacity *= 2;
@@ -134,6 +132,18 @@ void OurVector<T>::insert(OurVectorIterator& insertIterator, T value)
 
     delete[] m_arr;
     m_arr = tempArr;
+}
+
+template <typename T>
+void OurVector<T>::erase(OurVectorIterator& iterator)
+{
+    while(iterator != end())
+    {
+        *iterator = *(iterator + 1);;
+        ++iterator;
+    }
+    iterator = nullptr;
+    --m_size;
 }
 
 template <typename T>

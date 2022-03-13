@@ -26,6 +26,7 @@ public:
     void emplaceBack(Args&&... args);
     
     void insert(OurVectorIterator&, T);
+    void erase(OurVectorIterator&);
 
     void clear();
     const T& at(size_t) const;
