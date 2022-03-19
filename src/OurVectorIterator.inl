@@ -1,5 +1,6 @@
 #include "OurVector.hpp"
 
+// TODO
 template <typename T>
 using iterator_pointer = typename OurVector<T>::OurVectorIterator::pointer;
 
@@ -16,7 +17,7 @@ typename OurVector<T>::OurVectorIterator::reference OurVector<T>::OurVectorItera
 }
 
 template <typename T>
-iterator_pointer<T> OurVector<T>::OurVectorIterator::operator->()
+typename OurVector<T>::OurVectorIterator::pointer OurVector<T>::OurVectorIterator::operator->()
 {
     return m_ptr;
 }
